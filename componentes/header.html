@@ -1,0 +1,52 @@
+<header class="header container-fluid">
+    <nav class="row">
+
+
+        <div class="col col-md-4 links">
+            <div class="col-8">
+                <a href="index.php">Início</a>
+                <a href="catalogo.php?filtro=todos">Catalogo</a>
+            </div>
+
+        </div>
+
+        <div class="col col-6 col-md-4 logo">
+            <a href="index.php"><img height="60" src="imgs/logo/juniorbest.png" alt="Logo"></a>
+        </div>
+
+        <ul class="d-none d-md-flex col-md-4">
+            <li><a href="#" target="_blank"><i
+                        class="bi bi-instagram"></i></a></li>
+            <li><a href="#" target="_blank"><i class="bi bi-whatsapp"></i></a></li>
+        </ul>
+
+
+
+        <div class="col-6 col-hamburger">
+            <i class="bi bi-list" id="hamburguer"></i>
+        </div>
+
+        <div class="col col-12 links-mob" id="nav-mobile">
+            <a href="index.php">Início</a>
+            <a href="catalogo.php?filtro=todos">Catalogo</a>
+            <ul>
+                <li><a href="#" target="_blank"><i
+                            class="bi bi-instagram"></i></a></li>
+                <li><a href="#" target="_blank"><i class="bi bi-whatsapp"></i></a></li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+<script>
+
+    var hamburguer = document.getElementById('hamburguer')
+    var navmobile = document.getElementById('nav-mobile')
+
+    hamburguer.addEventListener('click', animarMenu)
+
+    function animarMenu() {
+        navmobile.classList.toggle('aparecerHamburguer')
+
+    }
+</script>

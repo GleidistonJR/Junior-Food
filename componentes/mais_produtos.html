@@ -1,0 +1,52 @@
+<section class="mais-produtos container-fluid">
+    <article class="row">
+        <div class="txt col-md-10">
+            <h2>Produtos
+                <?php echo $desc['representada'] ?>
+            </h2>
+            <p>Oferecemos o melhor em automação industrial, e para isso além de vasta experiência nesse mercado,
+                contamos com os melhores fabricantes de equipamentos e peças de reposição. <br>
+            </p>
+        </div>
+        <aside class="col-md-10 carrousel">
+            <div class="swiper mais-produtos-slide">
+                <div class="swiper-wrapper">
+
+
+                    <?php
+            
+            $pasta = 'data/produtos/'.$desc["representada"].'/';
+            $arquivos = glob("$pasta{*.json}", GLOB_BRACE);
+            
+            foreach ($arquivos as $desc) {
+                $produto = json_decode(file_get_contents($desc), true);
+
+                echo '                
+                
+                    <div class="swiper-slide">
+                        <div class="card">
+                            <img src="' . $produto["ImagemPrincipal"] . '" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">' . $produto["Titulo"] . '</h5>
+                                <p class="card-text">' . $produto["Categoria"] . '</p>
+                                <a href="produto.php?produto='. $produto["representada"] .'/' . $produto["Nome"] . '" class="ver_mais">Ver Mais Detalhes</a>
+                            </div>
+                        </div>
+                    </div>
+                ';
+            }
+            ?>
+
+
+
+                    
+
+
+
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </aside>
+
+    </article>
+</section>

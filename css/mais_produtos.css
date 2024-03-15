@@ -1,0 +1,81 @@
+.mais-produtos .row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.mais-produtos .row>* {
+    text-align: center !important;
+}
+
+.mais-produtos .row .txt {
+    margin: auto;
+    margin-bottom: 20px;
+}
+.mais-produtos .row .carrousel .mais-produtos-slide img{
+    width: 100%;
+}
+
+.mais-produtos .row .txt h2 {
+    font-size: 2.5em;
+    color: var(--cinza-escuro);
+    margin-top: 200px;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.mais-produtos .row .txt h2::before {
+    content: ' ';
+    position: absolute;
+    top: -100px;
+    left: 33%;
+    right: 0;
+    width: 33%;
+    height: 3px;
+    border-radius: 30px;
+    background-color: var(--amarelo);
+}
+
+.mais-produtos .row p {
+    font-size: 1.2em;
+    text-align: center;
+}
+
+.mais-produtos .row .card {
+    margin: 30px;
+}
+
+.mais-produtos a {
+    color: var(--amarelo-escuro);
+    text-decoration: none;
+}
+
+
+
+@media (max-width: 720px) {
+    .mais-produtos .row .txt h2 {
+        font-size: 2em;
+        margin-top: 100px;
+    }
+
+    .mais-produtos .row .txt h2::before {
+        top: -50px;
+    }
+    .mais-produtos .row .card {
+        margin: 10px 0 40px 0;
+    }
+    .mais-produtos .row p {
+        font-size: 1em;
+        text-align: center;
+        margin-bottom: 5px;
+    }
+
+    .mais-produtos .row .card .card-body{
+        padding: 10px 0;
+    }
+    .mais-produtos .row .card .card-body a {
+        font-size:0.8em;
+    }
+}

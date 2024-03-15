@@ -1,0 +1,145 @@
+.filtro {
+    padding: 85px 0 10px 0;
+    background-color: var(--cinza-fundo);
+    margin: 0 0 50px 0;
+    width: 100%;
+}
+.filtro .col-filtro {
+    text-align: center;
+    border-radius: 15px 15px 0 0;
+    padding: 10px;
+    
+}
+.filtro .col-filtro a {
+    padding: 15px 30px;
+    margin: 10px;
+    color: #444;
+    text-decoration: none;
+}
+
+.produtos {
+    padding-top: 0px;
+}
+
+.produtos h1 {
+    text-align: center;
+    font-size: 2.5em;
+    position: relative;
+}
+
+/*
+.produtos h1::before {
+    content: ' ';
+    position: absolute;
+    top: -80px;
+    left: 33%;
+    right: 0;
+    width: 33%;
+    height: 3px;
+    border-radius: 30px;
+    background-color: var(--amarelo);
+}*/
+
+
+.produtos .row-prod {
+    width: 80%;
+    padding: 50px;
+    margin: 0 auto;
+    justify-content: center;
+}
+
+.produtos .row .card {
+    width: 18%;
+    margin: 30px;
+}
+.produtos .row .card .card-body{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+.produtos a {
+    color: var(--amarelo-escuro);
+    text-decoration: none;
+}
+
+@media (max-width:1450px) {
+    .produtos .row {
+        width: 90%;
+        padding: 50px;
+        margin: 0 auto;
+        justify-content: center;
+    }
+
+    .produtos .row .card {
+        width: 25%;
+        margin: 20px 20px;
+        
+    }
+    .produtos .row .card .card-body h5{
+        font-size: 1.1em;
+    }
+    .produtos .row .card .card-body p{
+        font-size:0.9em;
+        margin-bottom: 5px;
+    }
+    .produtos .row .card .card-body a {
+        font-size:0.8em;
+    }
+    
+}
+@media (max-width:720px) {
+
+    .aparecer-filtro{
+        display: flex !important;
+    }
+    .filtro .btn-filtro {
+        text-decoration: none;
+        width: 100%;
+        text-align: center;
+        color: #444;
+    }
+    .filtro .col-filtro {
+        text-align: start;
+        border-radius: 15px 15px 0 0;
+        padding: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+    }
+    .filtro .col-filtro a {
+        display: block;
+        padding: 6px 30px;
+        margin: 0;
+        width: 50%;
+    }
+
+
+    .produtos .row {
+        width: 95%;
+        padding: 0px;
+        margin: 0 auto;
+        justify-content: space-around;
+    }
+
+    .produtos .row .card {
+        width: 45%;
+        margin: 10px 0;
+    }
+    .produtos .row .card .card-body{
+        padding: 10px 0;
+    }
+    .produtos .row .card .card-body h5{
+        font-size: 1.1em;
+    }
+    .produtos .row .card .card-body p{
+        font-size:0.9em;
+        margin-bottom: 5px;
+    }
+    .produtos .row .card .card-body a {
+        font-size:0.8em;
+    }
+}

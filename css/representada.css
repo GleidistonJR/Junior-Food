@@ -1,0 +1,121 @@
+.representada {
+    margin-top: 120px;
+}
+
+.representada .row {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+}
+
+.representada .row .col-img,
+.representada .row .col-txt {
+    padding: 30px;
+}
+
+.representada .row .col-txt {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.representada .row .col-txt a {
+    width: 50%;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.representada .row .col-txt p {
+    margin-bottom: 30px;
+    font-size: 1.2em;
+}
+
+.representada .row img {
+    width: 75%;
+}
+
+
+.representada .row-2 {
+    margin-top: 50px;
+}
+
+.representada .row-2 .col-txt {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+}
+
+.representada .row-2 .col-txt img {
+    width: 80%;
+    border-radius: 15px;
+}
+
+.representada .row-2 .col-txt ul {
+    padding: 0;
+    list-style: none;
+    text-align: center;
+}
+
+.representada .row-2 .col-txt ul li {
+    font-family: 'roboto' !important;
+    font-size: 1.3em;
+}
+
+.representada .row-2 .col-txt h3 {
+    font-size: 1.8em;
+}
+
+.representada .row-2 .col-txt p {
+    font-size: 1.2em;
+}
+
+@media (max-width:720px) {
+    .representada {
+        margin-top: 90px;
+    }
+
+    .representada .row {
+        width: 95%;
+    }
+
+    .representada .row .col-img,
+    .representada .row .col-txt {
+        padding: 10px 0px;
+    }
+    .representada .row .col-img {
+        text-align: center;
+    }
+    .representada .row .col-txt p {
+        margin-bottom: 10px ;
+    }
+
+    .representada .row-2 {
+        margin-top: 20px;
+    }
+    
+    .representada .row-2 .col-txt {
+        display: block;
+        text-align: center;
+        margin-top: 30px;
+    }
+
+    .representada .row-2 .col-txt h3 {
+        font-size: 1.7em;
+    }
+
+    .representada .row-2 .col-txt ul li {
+        font-family: 'roboto' !important;
+        font-size: 1.1em;
+    }
+
+    .representada .row-2 .col-txt p {
+        font-size: 1em;
+    }
+
+    .representada .row-2 .col-txt img {
+        margin-bottom: 20px;
+    }
+}

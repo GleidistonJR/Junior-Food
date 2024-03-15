@@ -1,0 +1,103 @@
+.produto {
+    padding-top: 100px;
+    height: 100%;
+}
+.produto .row{
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    height: 100%;
+}
+.produto .col-img img {
+    width: 100%;
+}
+.produto .col-txt{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.produto .col-txt .titulo{
+    font-size: 2.5em;
+    position: relative;
+}
+.produto .col-txt .categoria{
+    font-size: 1.2em;
+    position: relative;
+    margin-bottom: 80px;
+}
+.produto .col-txt  b{
+    font-family: 'roboto' !important;
+}
+.produto .col-txt .categoria::before{
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+    width: 40%;
+    height: 3px;
+    border-radius: 30px;
+    background-color: var(--amarelo);
+    
+}
+.produto .col-txt .subtitulo{
+    font-size: 1.2em;
+    margin-bottom: 80px;
+}
+
+.accordion {   
+    --bs-accordion-btn-focus-border-color: #fff !important;
+    --bs-accordion-btn-focus-box-shadow: 2px 2px 4px var(--cinza-claro) !important;
+    --bs-accordion-active-color: var(--cinza-escuro) !important;
+    --bs-accordion-active-bg: none !important;
+}
+
+
+.produto .row .btn-orcamento-amarelo {
+    background-color: var(--amarelo);
+    width: 30%;
+    color: var(--cinza-escuro);
+    text-align: center;
+    padding: 8px 30px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin: 50px auto;
+}
+
+.produto .row .btn-orcamento-amarelo:hover {
+    color: var(--cinza-fundo);
+}
+.produto .row .btn-variacoes {
+    color: #000;
+    cursor: pointer;
+}
+.produto .row .btn-variacoes:hover {
+    color: #555;
+
+}
+.btn-amarelo {
+    background-color: var(--amarelo);
+    color: var(--cinza-escuro);
+    text-align: center;
+    padding: 8px 30px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+.btn-amarelo:hover {
+    color: var(--cinza-fundo);
+}
+
+@media (max-width:1400px) {
+    .produto .row .btn-orcamento-amarelo {
+        width:40%;
+        margin: 0 auto;
+    }
+
+}
+@media (max-width:720px) {
+    .produto .row .btn-orcamento-amarelo {
+        width: 60%;
+        margin: 0 auto;
+    }
+
+}
