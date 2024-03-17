@@ -1,16 +1,9 @@
 {
-    "Nome": "pizza-calabresa",
-    "Titulo": "Pizza de Calabresa",
-    "representada": "schulz",
-    "Categoria": "Pizza",
-    "CategoriaFiltro": "compressor",
-    "ImagemPrincipal": "imgs/pizzas/pizza-calabresa.jpeg",
-    "Subtitulo": "Os compressores com tecnologia de compressão Scroll da Schulz possuem como principal característica a geração de ar comprimido isento de óleo para aplicações críticas.",
-    "sanfona": "true",
-    "sanfona1": "Desempenho e durabilidade",
-    "txt1": "Os modelos Scroll trabalham com ar comprimido isento de óleo e integram secador de ar e reservatório. Estes equipamentos permitem gerar, tratar e armazenar ar comprimido de alta qualidade, livre de condensado, com menor espaço ocupado e menos gastos de instalações. Os principais segmentos atendidos são: hospitalar, farmacêutico, cosmético, odontológico, alimentos, bebidas, semicondutores e outros. ",
-    "sanfona2": "Variações",
-    "txt2": "imgs/schulz-produtos/compressores/CompressordeParafusoSCR4000IsentoOleo-ficha.jpg",
-    "mais": "componentes/mais_produtos.html",
-    "pdf": "imgs/schulz-produtos/catalogo-schulz-compressores.pdf"
+    "nome-arquivo": "pizza-calabresa",
+    "titulo": "Pizza de Calabresa",
+    "preco": "34,90",
+    "ingredientes": ["Hamburguer","Ovo", "Bacon", "Salsicha", "Tomate","Alface","Presunto", "Mussarela"],
+    "imagem-principal": "imgs/pizzas/pizza-calabresa.jpeg",
+    "categoria": "Pizza",
+    "categoria-filtro": "pizza"
 }

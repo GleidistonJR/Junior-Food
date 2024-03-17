@@ -23,9 +23,11 @@
 
     include_once("componentes/mapa.html");
 
+    //include_once("componentes/header-bottom.html");
+
     include_once("componentes/footer.html");
 
-    include_once("componentes/whatsapp.html");
+    //include_once("componentes/whatsapp.html");
     ?>
 </body>
 
