@@ -65,6 +65,8 @@ $filtro = $_GET["filtro"];
                         </aside>
                         ';
                     }
+
+    include_once("componentes/whatsapp.php");
                 }
             }
 
@@ -82,7 +84,6 @@ $filtro = $_GET["filtro"];
     <?php
     include_once("componentes/footer.html");
 
-    include_once("componentes/whatsapp.html");
     ?>
 
 

@@ -13,6 +13,8 @@
 
 <body>
     <?php
+    
+
     include_once("componentes/header.html");
 
     include_once("componentes/slide.html");
@@ -27,7 +29,7 @@
 
     include_once("componentes/footer.html");
 
-    //include_once("componentes/whatsapp.html");
+    include_once("componentes/whatsapp.php");
     ?>
 </body>
 
