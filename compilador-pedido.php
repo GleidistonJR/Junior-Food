@@ -4,17 +4,21 @@
 
 echo '<pre>';
     $arrayPedido = array();
-    //Existe duas formas de adiconar elemento ao array
-    //Primeira por funçao
-    array_push($arrayPedido, $carrinho['titulo']);
-    //Segunda por deixar o indice vazio, sera adiconada na ultima posiçao
-    $arrayPedido[] = $carrinho['preco']; 
-
+    $arrayPedido = $carrinho;
+    $pedidoFormatado = " ";
+    foreach($arrayPedido as $item){
+        if //if para pegar espaço nos nomes
+        $pedidoFormatado .= $item;
+        $pedidoFormatado .= "%20";
+        //$pedidoFormatado = substr_replace($pedidoFormatado, $item,-1);
+    };
+    
 
 
     //Guardando array em json
-$arquivoJson = fopen('pedido.json', 'w');
+$arquivoJson = fopen('arraypedido.json', 'w');
 fwrite($arquivoJson, json_encode($arrayPedido));
 fclose($arquivoJson);
 
-print_r($carrinho);
+print_r($pedidoFormatado);
+
