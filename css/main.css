@@ -9,11 +9,15 @@
 }
 :root{
     --letra-header: #fff;
-    /* --back-header: #ed3237; */
     --back-header: #b30006;
+
+    --letra-carrinho-bottom: #fff;
+    --back-carrinho-bottom: #000;
+
     --amarelo-claro: #fffcf1;
     --amarelo: #FFCC29;
     --amarelo-escuro: #aa891c;
+
     --cinza-escuro:#252323;
     --cinza-medio:#6b6b6d;
     --cinza-claro:#a1a1a3;

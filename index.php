@@ -27,6 +27,8 @@
 
     //include_once("componentes/header-bottom.html");
 
+    include_once("componentes/carrinho-bottom.html");
+
     include_once("componentes/footer.html");
 
     include_once("componentes/whatsapp.php");

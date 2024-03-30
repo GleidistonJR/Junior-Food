@@ -11,7 +11,7 @@ $filtro = $_GET["filtro"];
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vinhal | Produtos</title>
+    <title>Junior Food | Catalogo</title>
     <link rel="shortcut icon" href="./imgs/logo/favicon.bmp" type="image/x-icon">
 
     <!-- Incluindo CSS-->
@@ -25,13 +25,17 @@ $filtro = $_GET["filtro"];
     ?>
 
 
+    <nav class="col-12 col-md-12 col-filtro " id="nav-filtro">
+        <a href="?filtro=todos">Todos</a>
+        <a href="?filtro=hamburguer">Hamburguer</a>
+        <a href="?filtro=pizza">Pizza</a>
+        <a href="?filtro=pizza">Pizza</a>
+        <a href="?filtro=pizza">Pizza</a>
+        <a href="?filtro=pizza">Pizza</a>
+        <a href="?filtro=pizza">Pizza</a>
+    </nav>
 
     <section class="catalogo container-fluid">
-        <nav class="col-12 col-md-12 col-filtro " id="nav-filtro">
-            <a href="?filtro=todos">Todos</a>
-            <a href="?filtro=hamburguer">Hamburguer</a>
-            <a href="?filtro=pizza">Pizza</a>
-        </nav>
 
         <h1 class='txt-center'>Produtos</h1>
 
@@ -50,23 +54,26 @@ $filtro = $_GET["filtro"];
                     $produto = json_decode(file_get_contents($arquivo), true);
                     if ($filtro == "todos" || $filtro == $produto['categoria-filtro'] || $filtro == $produto['CategoriaFiltro']) {
                         echo '                
-                        <aside class="col-12 d-flex">
+                        <aside class="col-12 d-flex col-prod">
                             <div class="col-img col-3">
                                 <img class="img-fluid" src="'.$produto["imagem-principal"].'" width="100%" alt="">
                             </div>
                             <div class="col-txt col-9 d-flex">
-                                <p class="col-8">'; 
+                                <p class="col-9 ingredientes">'; 
                                 foreach ($produto["ingredientes"] as $imprimir){
                                     echo ''.$imprimir. ', ' ;
                                 };
                                 echo' </p>
-                                <h3 class="col-4">'.$produto["preco"].'</h3>
+                                <div class="col-3">
+                                <h3>'.$produto["preco"].'</h3>
+                                <i class="bi bi-cart-plus-fill"></i>
+                                </div>
                             </div>
                         </aside>
                         ';
                     }
 
-    include_once("componentes/whatsapp.php");
+    //include_once("componentes/whatsapp.php");
                 }
             }
 
@@ -82,6 +89,7 @@ $filtro = $_GET["filtro"];
 
 
     <?php
+    include_once("componentes/carrinho-bottom.html");
     include_once("componentes/footer.html");
 
     ?>

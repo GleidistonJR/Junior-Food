@@ -1,0 +1,22 @@
+.carrinho-bottom{
+    margin: 0;
+    padding: 10px 20px;
+    background-color: var(--back-carrinho-bottom);
+    position: fixed;
+    bottom: 0;
+}
+.carrinho-bottom .row{
+    align-items: center;
+}
+.carrinho-bottom .row .col-icon{
+    text-align: end;
+}
+
+.carrinho-bottom a{
+    text-decoration: none;
+    color: var(--letra-carrinho-bottom) ;    
+}
+.carrinho-bottom .bi-cart-fill{
+    color: var(--letra-carrinho-bottom);
+    font-size: 2em;
+}
