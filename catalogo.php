@@ -66,7 +66,7 @@ $filtro = $_GET["filtro"];
                                 echo' </p>
                                 <div class="col-3">
                                 <h3>'.$produto["preco"].'</h3>
-                                <i class="bi bi-cart-plus-fill"></i>
+                                <a href="./compilador-pedido.php"><i class="bi bi-cart-plus-fill"></i></a>
                                 </div>
                             </div>
                         </aside>

@@ -7,9 +7,10 @@ echo '<pre>';
     $arrayPedido = $carrinho;
     $pedidoFormatado = " ";
     foreach($arrayPedido as $item){
-        if //if para pegar espaço nos nomes
+        if ($item == " "){//if para pegar espaço nos nomes
+            $pedidoFormatado .= "%20";        
+        }
         $pedidoFormatado .= $item;
-        $pedidoFormatado .= "%20";
         //$pedidoFormatado = substr_replace($pedidoFormatado, $item,-1);
     };
     
@@ -17,8 +18,13 @@ echo '<pre>';
 
     //Guardando array em json
 $arquivoJson = fopen('arraypedido.json', 'w');
-fwrite($arquivoJson, json_encode($arrayPedido));
+fwrite($arquivoJson, json_encode($pedidoFormatado));
 fclose($arquivoJson);
 
 print_r($pedidoFormatado);
+?>
+<html>
+<meta http-equiv="refresh" content="0; 
+URL='catalogo.php '"/>
+</html>
 
