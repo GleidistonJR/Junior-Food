@@ -5,5 +5,5 @@
     "ingredientes": ["Hamburguer","Ovo", "Bacon", "Salsicha", "Tomate","Alface","Presunto", "Mussarela"],
     "imagem-principal": "imgs/pizzas/pizza-calabresa.jpeg",
     "categoria": "Pizza",
-    "categoria-filtro": "pizza"
+    "categoria-filtro": "pizzas"
 }

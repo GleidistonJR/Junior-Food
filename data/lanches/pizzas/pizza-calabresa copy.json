@@ -1,9 +1,0 @@
-{
-    "nome-arquivo": "pizza-calabresa",
-    "titulo": "Pizza de Calabresa",
-    "preco": "34,90",
-    "ingredientes": ["Hamburguer","Ovo", "Bacon", "Salsicha", "Tomate","Alface","Presunto", "Mussarela"],
-    "imagem-principal": "imgs/pizzas/pizza-calabresa.jpeg",
-    "categoria": "Pizza",
-    "categoria-filtro": "pizza"
-}
