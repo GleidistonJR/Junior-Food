@@ -66,7 +66,7 @@ $filtro = $_GET["filtro"];
                                 echo' </p>
                                 <div class="col-3">
                                 <h3>'.$produto["preco"].'</h3>
-                                <a href="./compilador-pedido.php?add=' . $produto['categoria-filtro'] . '/' . $produto["nome-arquivo"] . '"><i class="bi bi-cart-plus-fill"></i></a>
+                                <a href="./adicionar.php?add=' . $produto['categoria-filtro'] . '/' . $produto["nome-arquivo"] . '"><i class="bi bi-cart-plus-fill"></i></a>
                                 </div>
                             </div>
                         </aside>
@@ -77,6 +77,11 @@ $filtro = $_GET["filtro"];
                 }
             }
 
+            /*if(!file_exists('arraypedido.json')){
+                $arquivoJson = fopen('arraypedido.json', 'a');
+                fwrite($arquivoJson,'{');
+                fclose($arquivoJson);
+            }*/
 
             ?>
 

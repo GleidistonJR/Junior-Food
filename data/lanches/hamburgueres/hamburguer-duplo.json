@@ -1,0 +1,9 @@
+{
+    "nome-arquivo": "hamburguer-duplo",
+    "titulo": "Hamburguer Duplo",
+    "preco": "24,90",
+    "ingredientes": ["2xHamburguer","Ovo", "Bacon", "Salsicha", "Tomate","Alface","Presunto", "Mussarela"],
+    "imagem-principal": "imgs/hamburgueres/sanduiche-gemeos.jpeg",
+    "categoria": "Hamburguer",
+    "categoria-filtro": "hamburgueres"
+}

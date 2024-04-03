@@ -31,7 +31,7 @@
 
     include_once("componentes/footer.html");
 
-    include_once("componentes/whatsapp.php");
+    //include_once("componentes/whatsapp.php");
     ?>
 </body>
 
