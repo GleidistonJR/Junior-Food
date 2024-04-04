@@ -27,12 +27,8 @@ $filtro = $_GET["filtro"];
 
     <nav class="col-12 col-md-12 col-filtro " id="nav-filtro">
         <a href="?filtro=todos">Todos</a>
-        <a href="?filtro=hamburguer">Hamburguer</a>
-        <a href="?filtro=pizza">Pizza</a>
-        <a href="?filtro=pizza">Pizza</a>
-        <a href="?filtro=pizza">Pizza</a>
-        <a href="?filtro=pizza">Pizza</a>
-        <a href="?filtro=pizza">Pizza</a>
+        <a href="?filtro=hamburgueres">Hamburguer</a>
+        <a href="?filtro=pizzas">Pizza</a>
     </nav>
 
     <section class="catalogo container-fluid">
