@@ -19,14 +19,39 @@
     print_r($carrinho);
     
 
+
+    // Verifica se os dados foram enviados pelo formulário
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        // Coleta os dados do endereço
+        $rua = $_POST['rua'];
+        $quadra = $_POST['quadra'];
+        $lote = $_POST['lote'];
+        $numero = $_POST['numero'];
+        $complemento = $_POST['complemento'];
+        $referencia = $_POST['referencia'];
+        $setor = $_POST['setor'];
+
+        //forma de pagamento
+        $formaPagamento = $_POST['pagamento'];
+
+
+        $enderecoCliente = 'Rua:%20'.$rua.'%0A';
+        $enderecoCliente .= 'Quadra:%20'.$quadra.'%20Lote:%20'.$lote.'%20Número:%20'.$numero.'%0A';
+        $enderecoCliente .= 'Complemento:%20'.$complemento.'%0A';
+        $enderecoCliente .= 'Ponto%20de%20Referencia:%20'.$referencia.'%0A';
+        $enderecoCliente .= 'Setor:%20'.$setor.'';
+    }
+
+       
+
+
+
     //criando variaveis para link formatado
-    $data = "03/04/2024";
+    $data = date('Y-m-d H:i:s');
     $nomeCliente = 'Gleidiston';
     $celularCliente = '(62)994406991';
-    $formaPagamento = 'Dinheiro';
-    $enderecoCliente = 'Rua Cp 43, 001, Quadra: 37, Lote: 12, Carolina parque , Goiânia, GO, 
-    Ponto de Referência: Rua da igreja católica';
-    $taxaEntrega = 3;
+    //$enderecoCliente = 'Rua Cp 43, 001, Quadra: 37, Lote: 12, Carolina parque , Goiânia, GO, Ponto de Referência: Rua da igreja católica';
+    $taxaEntrega = 3; 
 
 
 
@@ -51,7 +76,7 @@
     $linkMensagem .= '----------------------------------%0A';
     $linkMensagem .= 'Forma%20de%20pagamento:%20'. $formaPagamento . '%0A';
     $linkMensagem .= '----------------------------------%0A';
-    $linkMensagem .= 'Endereço:%20'. $enderecoCliente . '%0A';
+    $linkMensagem .= 'Endereço:%0A'. $enderecoCliente . '%0A';
     $linkMensagem .= '----------------------------------%0A';
     $linkMensagem .= 'Subtotal:%20'. $subtotal . '%0A';
     $linkMensagem .= 'Taxa%20de%20Entrega:%20'. $taxaEntrega . '%0A';
@@ -71,3 +96,7 @@
 <!--<meta http-equiv="refresh" content="0; URL='./catalogo.php'"/> 
 -->
 </html>
+
+<?php
+    unlink('carrinho'.$ip_address.'.json')
+?>

@@ -5,6 +5,6 @@
     "ingredientes": ["2xHamburguer","Ovo", "Bacon", "Salsicha", "Tomate","Alface","Presunto", "Mussarela"],
     "imagem-principal": "imgs/hamburgueres/sanduiche-gemeos.jpeg",
     "categoria": "Hamburguer",
-    "quantidade": 2,
+    "quantidade": 1,
     "categoria-filtro": "hamburgueres"
 }
