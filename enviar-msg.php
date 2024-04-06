@@ -22,6 +22,11 @@
 
     // Verifica se os dados foram enviados pelo formulário
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        // Coleta os dados do cliente
+        $nomeCliente = $_POST['nome'];
+        $celularCliente  = $_POST['tel'];
+    
+
         // Coleta os dados do endereço
         $rua = $_POST['rua'];
         $quadra = $_POST['quadra'];
@@ -30,6 +35,7 @@
         $complemento = $_POST['complemento'];
         $referencia = $_POST['referencia'];
         $setor = $_POST['setor'];
+
 
         //forma de pagamento
         $formaPagamento = $_POST['pagamento'];
@@ -47,10 +53,7 @@
 
 
     //criando variaveis para link formatado
-    $data = date('Y-m-d H:i:s');
-    $nomeCliente = 'Gleidiston';
-    $celularCliente = '(62)994406991';
-    //$enderecoCliente = 'Rua Cp 43, 001, Quadra: 37, Lote: 12, Carolina parque , Goiânia, GO, Ponto de Referência: Rua da igreja católica';
+    $data = date('H:i:s d/m/Y');
     $taxaEntrega = 3; 
 
 
@@ -84,8 +87,7 @@
     $linkMensagem .= '%0A';
     $linkMensagem .= 'Obrigado pelo seu pedido!';
     
-    
-    
+  
 ?>
 
 <html>

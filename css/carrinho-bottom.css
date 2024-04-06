@@ -20,3 +20,23 @@
     color: var(--letra-carrinho-bottom);
     font-size: 2em;
 }
+
+.modal-carrinho .modal-content{
+    background-color: var(--back-carrinho-bottom);
+    color: var(--letra-carrinho-bottom);
+}
+.modal-carrinho .modal-content button.enviar{
+    border-radius: 50px;
+    background-color: #078803;
+    padding: 5px 15px 15px 8px;
+    width: 80%;
+    border: none;
+    box-shadow: none;
+    margin-left: 10%;
+    color: #eee;
+    font-size: 1.1em;
+    margin-top: 20px;
+}
+.modal-carrinho .modal-content button.enviar i{
+    font-size: 1.5em;
+}

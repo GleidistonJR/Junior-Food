@@ -21,27 +21,41 @@
             </div>
             <div class="modal-body">
                 <div class="container">
-                    <h3>Coleta de Endereço</h3>
                     <form id="addressForm" class="row" action="enviar-msg.php" method="post">
+                        
+
+                        <h3>Informações Pessoais</h3>
+                        
+                        <div class="col-12">
+                            <label for="nome" class="form-label">Nome:</label>
+                            <input type="text" class="form-control" id="nome" name="nome" required>
+                        </div>
+                        <div class="col-12">
+                            <label for="tel" class="form-label">Telefone:</label>
+                            <input type="number" class="form-control" id="tel" name="tel" required>
+                        </div>
+
+
+                        <h3>Coleta de Endereço</h3>
+
                         <div class="col-12">
                             <label for="rua" class="form-label">Rua:</label>
                             <input type="text" class="form-control" id="rua" name="rua" required>
                         </div>
-
                         
                         <div class="col-5">
                             <label for="quadra" class="form-label ">Quadra:</label>
-                            <input type="text" class="form-control" id="quadra" name="quadra" required>
+                            <input type="number" class="form-control" id="quadra" name="quadra" required>
                         </div>
                         
                         <div class="col-4">
                             <label for="lote" class="form-label">Lote:</label>
-                            <input type="text" class="form-control" id="lote" name="lote" required>
+                            <input type="number" class="form-control" id="lote" name="lote" required>
                         </div>
                         
                         <div class="col-3">
                             <label for="numero" class="form-label">Número:</label>
-                            <input type="text" class="form-control" id="numero" name="numero">
+                            <input type="number" class="form-control" id="numero" name="numero">
                         </div>
                         
                         <div class="col-12">
@@ -77,7 +91,7 @@
                             
 
 
-                        <button type="submit">Enviar</button>
+                        <button class="enviar" type="submit">Enviar Pedido <i class="bi bi-whatsapp"></i></button>
                     </form>
                 </div>
             </div>
