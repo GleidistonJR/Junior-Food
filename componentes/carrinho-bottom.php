@@ -22,7 +22,13 @@
             <div class="modal-body">
                 <div class="container">
                     <form id="addressForm" class="row" action="enviar-msg.php" method="post">
-                        
+                        <?php
+                        $ip_address = $_SERVER['REMOTE_ADDR'];
+                        $carrinho = json_decode(file_get_contents('carrinho'.$ip_address.'.json'), true);
+                            foreach($carrinho as $item){
+                                echo'<h3>item</h3>';
+                            };
+                        ?>
 
                         <h3>Informações Pessoais</h3>
                         
@@ -34,11 +40,14 @@
                             <label for="tel" class="form-label">Telefone:</label>
                             <input type="number" class="form-control" id="tel" name="tel" required>
                         </div>
-
-
+                        
                         <h3>Coleta de Endereço</h3>
 
-                        <div class="col-12">
+                        <div class="col-6">
+                            <label for="cep" class="form-label">Cep:</label>
+                            <input type="number" class="form-control" id="cep" name="cep" required>
+                        </div>
+                        <div class="col-6">
                             <label for="rua" class="form-label">Rua:</label>
                             <input type="text" class="form-control" id="rua" name="rua" required>
                         </div>
