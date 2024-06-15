@@ -49,7 +49,7 @@ $filtro = $_GET["filtro"];
 
                 foreach ($arquivos as $arquivo) {
                     $produto = json_decode(file_get_contents($arquivo), true);
-                    if ($filtro == "todos" || $filtro == $produto['categoria-filtro'] || $filtro == $produto['CategoriaFiltro']) {
+                    if ($filtro == "todos" || $filtro == $produto['categoria-filtro'] || $filtro == $produto['categoria-filtro']) {
                         echo '                
                         <aside class="col-12 d-flex col-prod">
                             <div class="col-img col-3">
