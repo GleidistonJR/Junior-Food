@@ -1,4 +1,9 @@
 <?php
+   //MODIFICAÇÂO NECESSARIA!!
+   //sera apenas guardado o ID do produto na variavel de sessão carrinho
+   //Assim não sera necessario utilizar json, para o carrinho, e no final do pedido
+   //fazer um codigo que buscara todos os ID do carrinho e preencher o pedido!
+
     session_start();
 
     $add = $_GET["add"];

@@ -1,13 +1,16 @@
 <section class="carrinho-bottom container-fluid">
     <article class="row">
+        <a href="?enviar-msg.php" class="row" data-bs-target="#exampleModal" data-bs-toggle="modal" target="_blank">
         <div class="col col-txt">
             <!-- Button trigger modal -->
-            <a href="?enviar-msg.php" data-bs-target="#exampleModal" data-bs-toggle="modal" target="_blank">Carrinho</a>
-        </div>
+             <p>Carrinho</p>
 
-        <div class="col col-icon">
-            <i class="bi bi-cart-fill"></i>
-        </div>
+            </div>
+            
+            <div class="col col-icon">
+                <i class="bi bi-cart-fill"></i>
+            </div>
+        </a>
 
     </article>
 </section>

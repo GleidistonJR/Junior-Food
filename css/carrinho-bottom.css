@@ -6,8 +6,11 @@
     bottom: 0;
 }
 
-.carrinho-bottom .row {
+.carrinho-bottom a.row {
     align-items: center;
+}
+.carrinho-bottom .row .col-txt p {
+    margin: 0;
 }
 
 .carrinho-bottom .row .col-icon {
