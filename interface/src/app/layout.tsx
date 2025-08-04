@@ -1,6 +1,7 @@
 
 import "./globals.css";
 import { Header } from '../components/header'
+import { Footer } from '../components/footer'
 
 export const metadata: Metadata = {
   title: 'Junior Food',
@@ -26,7 +27,8 @@ export default function RootLayout({
 
         <Header />
         {children}
-        <h1>Footer</h1>
+
+        <Footer />
 
       </body>
     </html>
