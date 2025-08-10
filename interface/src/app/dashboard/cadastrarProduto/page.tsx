@@ -1,12 +1,12 @@
 
 
-export default async function CadastrarProduto (){
+export default function CadastrarProduto (){
 
     return(
         <main>
             <h1 className="text-center mt-10 font-bold text-5xl">Cadastrar Produto</h1>
 
-            <form action="http://127.0.0.1:8000/api/produtos/" method="POST" encType="multipart/form-data" className="max-w-md mx-auto bg-white p-6 rounded-lg shadow-md">
+            <form action="http://127.0.0.1:8000/produtos/" method="POST" encType="multipart/form-data" className="max-w-md mx-auto bg-white p-6 rounded-lg shadow-md">
 
                 <div className="mb-4">
                     <label htmlFor="nomeProduto" className="block text-gray-700 font-medium mb-2">Nome</label>
@@ -23,7 +23,7 @@ export default async function CadastrarProduto (){
                 <div className="mb-4">
                     <label htmlFor="precoProduto" className="block text-gray-700 font-medium mb-2">Preço</label>
                     <input className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none 
-                    focus:ring-2 focus:ring-blue-500" type="number" id="precoProduto" name="preco" />
+                    focus:ring-2 focus:ring-blue-500" type="text" id="precoProduto" name="preco" />
                 </div>
                
                 <div className="mb-4">

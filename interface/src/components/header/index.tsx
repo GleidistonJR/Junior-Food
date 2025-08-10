@@ -10,7 +10,6 @@ export function Header(){
                     
                     <li><Link className="flex" href="/">Home < HomeIcon className="text-white w-5" /></Link></li>
                     <li><Link className="flex" href="/carrinho">Carrinho< ShoppingCartIcon className="w-5"/></Link></li>
-                    <li><Link className="flex" href="/dashboard">Dashboard</Link></li>
                 </ul>
             </nav>
             <br/>

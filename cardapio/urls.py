@@ -11,6 +11,5 @@ router.register(r'produtos', ProdutoViewSet)
 app_name = 'cardapio'
 
 urlpatterns = [
-    path('', views.index, name='index'),
-    path('api/', include(router.urls)),
+    path('', include(router.urls)),
 ]

@@ -7,12 +7,13 @@ export function Footer(){
         <footer className="bg-black text-white">
             <article className="flex justify-around">
                 <aside className="flex flex-col justify-center">
-                <img src="images/juniorbest.png" className="w-30" alt="Logo Junior Food" />
+                <img src="/images/juniorbest.png" className="w-30" alt="Logo Junior Food" />
                 </aside>
                 <aside className="flex flex-col justify-center">
                     <Link className="flex" href="/">Home < HomeIcon className="w-4"/></Link>
                     <Link className="flex" href="/carrinho">Carrinho < ShoppingCartIcon className="w-4"/></Link>
                     <Link className="flex" href="/dashboard">Dashboard</Link>
+                    <Link className="flex" href="/dashboard/cadastrarProduto">Cadastrar Produto</Link>
                 </aside>
                 <aside className="flex flex-col justify-center">
                     <Link href="/">Insta</Link>

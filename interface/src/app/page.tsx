@@ -1,6 +1,4 @@
 'use client'
-import { Metadata } from "next"
-import { ShoppingCartIcon } from '@heroicons/react/24/outline'
 import { useState } from "react"
 import Modal from "@/components/modal"
 
