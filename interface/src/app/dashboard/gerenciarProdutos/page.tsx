@@ -1,22 +1,30 @@
-// app/page.js
-export default async function Home() {
-  // Fazendo requisição para sua API Django
-  const res = await fetch("http://localhost:8000/produtos/", {
-    cache: "no-store" // garante que os dados são sempre atualizados
-  });
+import Link from "next/link";
 
-  // Convertendo resposta para JSON
-  const produtos = await res.json();
+export default async function CadastrarProduto (){
 
-  return (
-    <main className="p-8">
-      <h1 className="text-2xl font-bold mb-4">Lista de Produtos</h1>
 
-      {/* Verifica se tem produtos */}
-      {produtos.length > 0 ? (
+    const url = "http://localhost:8000/produtos";
+        
+    const response = await fetch(url, {
+        cache: "no-store" // garante que os dados são sempre atualizados
+    });
+
+    const data = await response.json()
+
+
+
+    return(
+        <main>
+            
+            <h1 className="text-center text-3xl my-5">Gerenciamento Produtos</h1>
+
+            <Link href="/dashboard/" className="bg-gray-500 rounded-md px-5 py-3 mb-5">Dashboard</Link>
+
+            {/* Verifica se tem produtos */}
+      {data.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           
-          {produtos.map((produto) => (
+          {data.map((produto) => (
             <div
               key={produto.id}
               className="border rounded-lg shadow hover:shadow-lg transition"
@@ -48,6 +56,7 @@ export default async function Home() {
       ) : (
         <p>Nenhum produto encontrado.</p>
       )}
-    </main>
-  );
+            
+        </main>
+    )
 }
