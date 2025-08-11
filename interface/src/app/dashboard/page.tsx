@@ -17,7 +17,7 @@ export default async function Dashboard (){
                     </Link>
                 </div>
                 <div className="text-center m-5">
-                    <Link href="dashboard/gerenciarProdutos" 
+                    <Link href="dashboard/gerenciarProduto" 
                     className="bg-blue-500 px-8 py-3 text-white rounded-md">
                         Gerenciar Produtos
                     </Link>

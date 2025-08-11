@@ -1,4 +1,4 @@
-
+import Link from "next/link"
 
 export default function CadastrarProduto (){
 
@@ -6,7 +6,8 @@ export default function CadastrarProduto (){
         <main>
             <h1 className="text-center mt-10 font-bold text-5xl">Cadastrar Produto</h1>
 
-            <form action="http://127.0.0.1:8000/produtos/" method="POST" encType="multipart/form-data" className="max-w-md mx-auto bg-white p-6 rounded-lg shadow-md">
+            <form action="http://127.0.0.1:8000/produtos/" method="POST" encType="multipart/form-data"
+             className="max-w-md mx-auto bg-white p-6 rounded-lg shadow-md">
 
                 <div className="mb-4">
                     <label htmlFor="nomeProduto" className="block text-gray-700 font-medium mb-2">Nome</label>
@@ -32,10 +33,18 @@ export default function CadastrarProduto (){
                     focus:ring-2 focus:ring-blue-500" type="file" id="imagemProduto" name="imagem" />
                 </div>                
 
-                <div className="text-center">
-                    <input type="submit" value="Cadastrar" className="bg-blue-500 text-white py-2 px-8 rounded-xl" />
-
-                </div>
+                <ul className="flex gap-5 justify-center">
+                    <Link href="/dashboard/gerenciarProduto/">
+                    <li className="text-center  rounded-md w-50 py-3 mb-20 text-bold bg-gray-500 text-white
+                    hover:bg-gray-600">
+                        Voltar
+                    </li>
+                    </Link>
+                    <li className="text-center rounded-md w-50 py-3 mb-20 text-bold bg-green-700 text-white
+                    hover:cursor-pointer hover:bg-green-800">
+                        <input type="submit" value="Cadastrar" />
+                    </li>
+                </ul>
             </form>
             
         </main>

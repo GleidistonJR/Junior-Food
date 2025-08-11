@@ -10,16 +10,16 @@ export default async function Home() {
 
   return (
     <main className="p-8">
-      <h1 className="text-2xl font-bold mb-4">Lista de Produtos</h1>
+      <h1 className="text-center text-3xl font-bold mb-12">Cardapio</h1>
 
       {/* Verifica se tem produtos */}
       {produtos.length > 0 ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:max-w-2/3 m-auto gap-6">
           
           {produtos.map((produto) => (
             <div
               key={produto.id}
-              className="border rounded-lg shadow hover:shadow-lg transition"
+              className="rounded-lg shadow-lg hover:shadow-xl transition"
             >
               {/* Imagem */}
               {produto.imagem && (
@@ -34,12 +34,12 @@ export default async function Home() {
               <h2 className="text-2xl font-semibold mt-2 text-center">{produto.nome}</h2>
 
               {/* Descrição */}
-              <p className="text-gray-600 text-sm mt-1">
+              <p className="text-gray-600 text-md mx-5 mt-1">
                 {produto.descricao}
               </p>
 
               {/* Preço */}
-              <p className="text-green-600 font-bold text-lg mx-5 text-end">
+              <p className="text-green-700 font-bold text-2xl m-5 text-end">
                 R$ {produto.preco}
               </p>
             </div>
