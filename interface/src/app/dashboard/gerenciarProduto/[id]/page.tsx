@@ -1,54 +1,62 @@
-"use client"; // Necessário no Next.js App Router para rodar JS no cliente
+"use client";
 
-import Link from "next/link";
 import { useState, useEffect } from "react";
+import { useParams } from "next/navigation";
+import Link from "next/link";
 
-export default function GerenciarProduto({ params }) {
-  const { id } = params;
-  const [produto, setProduto] = useState(null);
+interface Produto {
+  id: number;
+  nome: string;
+  descricao: string;
+  preco: string;
+  imagem: string; // URL da imagem
+}
 
-  // Busca o produto no servidor
-  useEffect(() => {
-    async function fetchProduto() {
-      const res = await fetch(`http://127.0.0.1:8000/produtos/${id}`, {
-        cache: "no-store",
-      });
-      const data = await res.json();
-      setProduto(data);
-    }
-    fetchProduto();
-  }, [id]);
+export default function GerenciarProduto() {
+  const { id } = useParams();
+  const [produto, setProduto] = useState<Produto | null> (null); // Estado do produto
 
-  // Envia o PUT para o backend
-  async function handleSubmit(e) {
-    e.preventDefault(); // impede envio padrão
+  console.log(id)
 
-    const form = e.target;
-    const formData = new FormData(form); // pega todos os campos e arquivos
+useEffect(() => {
+  if (!id) return;
+
+  async function fetchProduto() {
+    console.log("Buscando produto com id:", id);
 
     try {
-      const res = await fetch(`http://127.0.0.1:8000/produtos/${id}/`, {
-        method: "PUT",
-        body: formData, // Envia direto para o Django
+      const res = await fetch(`http://localhost:8000/produtos/${id}`, {
+          headers: {
+            "Accept": "application/json"
+          },
+          cache: "no-store",
       });
+      console.log("Status da resposta:", res.status);
 
-      if (res.ok) {
-        alert("Produto atualizado com sucesso!");
-        window.location.href = "/dashboard"; // redireciona
-      } else {
-        alert("Erro ao atualizar o produto.");
+      if (!res.ok) {
+        console.error("Erro na requisição:", res.statusText);
+        return;
       }
+
+      const data = await res.json();
+      console.log("Dados recebidos:", data);
+
+      setProduto(data);
     } catch (error) {
-      console.error("Erro:", error);
+      console.error("Erro no fetch:", error);
     }
   }
 
-  if (!produto) return <p>Carregando...</p>;
+  fetchProduto();
+}, [id]); // useEffect roda quando a página carrega ou quando id muda
 
+if(!produto){
+  return <p>Carregando...</p>;
+}
   return (
     <main className=" max-w-fill lg:max-w-2/3 mx-auto p-5">
       <h1 className="text-2xl font-bold mb-5">Editar Produto</h1>
-      <form onSubmit={handleSubmit} encType="multipart/form-data">
+      <form encType="multipart/form-data">
         <div className="mb-3">
             <label htmlFor="produtoNome">Nome</label>
             <input
@@ -87,7 +95,6 @@ export default function GerenciarProduto({ params }) {
             <label htmlFor="produtoimagem">Imagem</label>
             <input
             type="file"
-            defaultValue={produto.imagem}
             id="produtoImagem"
             name="imagem"
             className="w-full p-2 border border-gray-400 rounded-md focus:outline-none 
