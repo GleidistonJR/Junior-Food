@@ -20,11 +20,22 @@ export default async function GerenciarProduto (){
 
           <nav>
             <ul className="flex gap-5 justify-center">
-              <li className="text-center  rounded-md w-50 py-3 mb-20 text-bold bg-green-700 text-white">
-                  <Link href="/">Home</Link>
+              <li>
+                <Link href="/">
+                  <button className="text-center  rounded-md w-50 py-3 mb-20 text-bold bg-green-700
+                  text-white hover:cursor-pointer hover:bg-green-900">
+                  Home
+                  </button>
+                </Link>
               </li>
-              <li className="text-center rounded-md w-50 py-3 mb-20 text-bold bg-blue-700 text-white">
-                  <Link href="/dashboard/">Dashboard</Link>
+              <li>
+                  <Link href="/dashboard/">
+                    <button className="text-center rounded-md w-50 py-3 mb-20 text-bold bg-blue-700 
+                    text-white hover:cursor-pointer hover:bg-blue-900">
+                      Dashboard
+
+                    </button>
+                  </Link>
               </li>
             </ul>
           </nav>

@@ -13,7 +13,6 @@ export function Footer(){
                     <Link className="flex" href="/">Home < HomeIcon className="w-4"/></Link>
                     <Link className="flex" href="/carrinho">Carrinho < ShoppingCartIcon className="w-4"/></Link>
                     <Link className="flex" href="/dashboard">Dashboard</Link>
-                    <Link className="flex" href="/dashboard/cadastrarProduto">Cadastrar Produto</Link>
                 </aside>
                 <aside className="flex flex-col justify-center">
                     <Link href="/">Insta</Link>

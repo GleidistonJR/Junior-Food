@@ -34,15 +34,19 @@ export default function CadastrarProduto (){
                 </div>                
 
                 <ul className="flex gap-5 justify-center">
-                    <Link href="/dashboard/gerenciarProduto/">
-                    <li className="text-center  rounded-md w-50 py-3 mb-20 text-bold bg-gray-500 text-white
-                    hover:bg-gray-600">
-                        Voltar
+                    <li>
+                        <Link href="/dashboard/">
+                            <button className="text-center  rounded-md w-50 py-3 mb-20 text-bold bg-gray-500 text-white
+                            hover:cursor-pointer hover:bg-gray-600" >
+                                    Voltar
+                            </button>
+                        </Link>
                     </li>
-                    </Link>
-                    <li className="text-center rounded-md w-50 py-3 mb-20 text-bold bg-green-700 text-white
-                    hover:cursor-pointer hover:bg-green-800">
-                        <input type="submit" value="Cadastrar" />
+                    <li>
+                        <button className="text-center rounded-md w-50 py-3 mb-20 text-bold bg-green-700 text-white
+                        hover:cursor-pointer hover:bg-green-800" type="submit">
+                                Cadastrar
+                        </button>
                     </li>
                 </ul>
             </form>

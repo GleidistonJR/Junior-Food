@@ -119,13 +119,19 @@ export default function GerenciarProduto() {
 
 
         <ul className="flex gap-5 justify-center">
-            <Link href="/dashboard/gerenciarProduto/">
-            <li className="text-center  rounded-md w-50 py-3 mb-20 text-bold bg-gray-500 text-white">
-                Voltar
+            <li>
+              <Link href="/dashboard/gerenciarProduto/">
+                  <button className="text-center  rounded-md w-50 py-3 mb-20 text-bold bg-gray-500 
+                  text-white hover:cursor-pointer hover:bg-gray-700">
+                    Voltar
+                  </button>
+              </Link>
             </li>
-            </Link>
-            <li className="text-center rounded-md w-50 py-3 mb-20 text-bold bg-green-700 text-white">
-                <input type="submit" value="Salvar Edição" className="hover:cursor-pointer"/>
+            <li>
+                <button type="submit" className="text-center rounded-md w-50 py-3 mb-20 text-bold bg-green-700 
+                text-white hover:cursor-pointer hover:bg-green-900">
+                  Salver Edição
+                </button>
             </li>
         </ul>
       </form>
