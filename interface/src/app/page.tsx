@@ -1,3 +1,12 @@
+interface Produto {
+  id: number;
+  nome: string;
+  descricao: string;
+  preco: string;
+  imagem: string; // URL da imagem
+  ingredientes: string[]; // Lista de ingredientes
+}
+
 // app/page.js
 export default async function Home() {
   // Fazendo requisição para sua API Django
@@ -6,7 +15,7 @@ export default async function Home() {
   });
 
   // Convertendo resposta para JSON
-  const produtos = await res.json();
+  const produtos: Produto[] = await res.json();
 
   return (
     <main className="p-8">
