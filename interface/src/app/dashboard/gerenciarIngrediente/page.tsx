@@ -1,30 +1,29 @@
-interface Produto {
+interface Ingrediente {
   id: number;
   nome: string;
-  descricao: string;
   preco: string;
   imagem?: string;
 }
 
 import Link from "next/link";
 
-export default async function GerenciarProduto (){
+export default async function Gerenciaringrediente (){
 
 
-    const url = "http://localhost:8000/produtos";
+    const url = "http://localhost:8000/ingredientes";
         
     const response = await fetch(url, {
         cache: "no-store" // garante que os dados são sempre atualizados
     });
 
-    const data: Produto[] = await response.json()
+    const data: Ingrediente[] = await response.json()
 
 
 
     return(
         <main>
             
-          <h1 className="text-center font-bold text-3xl my-10">Gerenciamento Produtos</h1>
+          <h1 className="text-center font-bold text-3xl my-10">Gerenciamento ingredientes</h1>
 
           <nav>
             <ul className="flex gap-5 justify-center">
@@ -50,43 +49,38 @@ export default async function GerenciarProduto (){
           
           <article className="">
 
-            {/* Verifica se tem produtos */}
+            {/* Verifica se tem ingredientes */}
             {data.length > 0 ? (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-2/3 m-auto gap-6">
                 
-                {data.map((produto) => (
-                  <Link key={produto.id} href={`/dashboard/gerenciarProduto/${produto.id}`}>
+                {data.map((ingrediente) => (
+                  <Link key={ingrediente.id} href={`/dashboard/gerenciarIngrediente/${ingrediente.id}`}>
 
                     <div
                       className="rounded-lg shadow-lg hover:shadow-2xl transition"
                     >
                       {/* Imagem */}
-                      {produto.imagem && (
+                      {ingrediente.imagem && (
                         <img
-                          src={produto.imagem}
-                          alt={produto.nome}
+                          src={ingrediente.imagem}
+                          alt={ingrediente.nome}
                           className="w-full object-cover rounded"
                         />
                       )}
 
                       {/* Nome */}
-                      <h2 className="text-2xl font-semibold mt-2 text-center">{produto.nome}</h2>
-
-                      {/* Descrição */}
-                      <p className="text-gray-600 text-sm mt-1 mx-5">
-                        {produto.descricao}
-                      </p>
+                      <h2 className="text-2xl font-semibold mt-2 text-center">{ingrediente.nome}</h2>
 
                       {/* Preço */}
                       <p className="text-green-600 font-bold text-lg mx-5 text-end">
-                        R$ {produto.preco}
+                        R$ {ingrediente.preco}
                       </p>
                     </div>
                   </Link>
                 ))}
               </div>
             ) : (
-              <p>Nenhum produto encontrado.</p>
+              <p>Nenhum ingrediente encontrado.</p>
             )}
           </article>
             

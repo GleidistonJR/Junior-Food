@@ -1,6 +1,21 @@
+interface Ingrediente {
+  id: number;
+  nome: string;
+  preco: string;
+  imagem?: string;
+}
+
 import Link from "next/link"
 
-export default function CadastrarProduto (){
+
+
+export default async function CadastrarProduto (){
+    
+        
+    const res = await fetch("http://localhost:8000/ingredientes/", {cache: "no-store"})
+
+    const data: Ingrediente[] = await res.json()
+
 
     return(
         <main>
@@ -16,9 +31,33 @@ export default function CadastrarProduto (){
                 </div>
 
                 <div className="mb-4">
-                    <label htmlFor="precoProduto" className="block text-gray-700 font-medium mb-2">Descrição</label>
-                    <input className="w-full p-2 py-5 border border-gray-300 rounded-lg focus:outline-none 
-                    focus:ring-2 focus:ring-blue-500" type="text" id="descricaoProduto" name="descricao" />
+                    <label htmlFor="descricaoProduto" className="block text-gray-700 font-medium mb-2">Ingredientes</label>
+
+                    <div className="w-full p-2 py-5 border border-gray-300 rounded-lg focus:outline-none 
+                    focus:ring-2 focus:ring-blue-500">
+
+                        {data.length > 0 ? (
+                            
+                            data.map((ingrediente) => (
+                                <label key={ingrediente.id} className="block">
+                                    <input
+                                        type="checkbox"
+                                        name="ingredientes"
+                                        value={ingrediente.id}
+                                        className="mr-2"
+                                    />
+                                    {ingrediente.nome}
+                                </label>
+                            ))
+
+                        ) : (
+                            <p>Nenhum ingrediente encontrado</p>                    
+                        )}
+
+                    </div>
+
+
+                    
                 </div>
                 
                 <div className="mb-4">
