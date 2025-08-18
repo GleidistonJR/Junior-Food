@@ -1,3 +1,5 @@
+'use client';
+
 interface Produto {
   id: number;
   nome: string;
@@ -8,8 +10,19 @@ interface Produto {
 
 import Link from "next/link";
 
+
 export default async function GerenciarProduto (){
 
+    const excluir = async (id: number) => {
+        const url = `http://localhost:8000/produtos/${id}`;
+        await fetch(url, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+        window.location.reload(); // Recarrega a página para atualizar a lista de produtos
+    }
 
     const url = "http://localhost:8000/produtos";
         
@@ -77,10 +90,19 @@ export default async function GerenciarProduto (){
                         {produto.descricao}
                       </p>
 
-                      {/* Preço */}
-                      <p className="text-green-600 font-bold text-lg mx-5 text-end">
-                        R$ {produto.preco}
-                      </p>
+                      <div className="flex justify-between items-center py-6">
+                        {/* Preço */}
+                        <button className="text-white bg-red-600 font-bold text-lg px-3 py-1 rounded-lg 
+                        mx-5 text-start hover:cursor-pointer hover:bg-red-800" 
+                        onClick={() => excluir(produto.id)}>
+                          Deletar
+                        </button>
+
+                        {/* Preço */}
+                        <p className="text-green-600 font-bold text-lg mx-5 text-end">
+                          R$ {produto.preco}
+                        </p>
+                      </div>
                     </div>
                   </Link>
                 ))}
