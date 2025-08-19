@@ -9,28 +9,32 @@ interface Produto {
 }
 
 import Link from "next/link";
+import { useState, useEffect } from "react";
+import Dashboard from "../page";
 
 
-export default async function GerenciarProduto (){
+export default function GerenciarProduto (){
 
-    const excluir = async (id: number) => {
-        const url = `http://localhost:8000/produtos/${id}`;
-        await fetch(url, {
-            method: "DELETE",
-            headers: {
-                "Content-Type": "application/json"
-            }
-        });
-        window.location.reload(); // Recarrega a página para atualizar a lista de produtos
-    }
+  const [produto, setProduto] = useState<Produto[]>([])
 
-    const url = "http://localhost:8000/produtos";
+    useEffect(() =>{
+      async function buscarProdutos() {        
+        const url = "http://localhost:8000/produtos";
         
-    const response = await fetch(url, {
-        cache: "no-store" // garante que os dados são sempre atualizados
-    });
+        const response = await fetch(url, {
+          headers: {
+            "Accept": "application/json"
+          },
+          cache: "no-store",
+        });
+        
+        const data = await response.json()
 
-    const data: Produto[] = await response.json()
+        setProduto(data)
+      }
+
+      buscarProdutos();
+    }, []);
 
 
 
@@ -50,11 +54,10 @@ export default async function GerenciarProduto (){
                 </Link>
               </li>
               <li>
-                  <Link href="/dashboard/">
+                  <Link href="/dashboard">
                     <button className="text-center rounded-md w-50 py-3 mb-20 text-bold bg-blue-700 
                     text-white hover:cursor-pointer hover:bg-blue-900">
                       Dashboard
-
                     </button>
                   </Link>
               </li>
@@ -63,53 +66,43 @@ export default async function GerenciarProduto (){
           
           <article className="">
 
-            {/* Verifica se tem produtos */}
-            {data.length > 0 ? (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-2/3 m-auto gap-6">
                 
-                {data.map((produto) => (
-                  <Link key={produto.id} href={`/dashboard/gerenciarProduto/${produto.id}`}>
+                {produto.map((prod : Produto) => (
 
-                    <div
-                      className="rounded-lg shadow-lg hover:shadow-2xl transition"
-                    >
+                    <div key={prod.id} className="rounded-lg shadow-lg hover:shadow-2xl transition">
                       {/* Imagem */}
-                      {produto.imagem && (
+                      {prod.imagem && (
                         <img
-                          src={produto.imagem}
-                          alt={produto.nome}
+                          src={prod.imagem}
+                          alt={prod.nome}
                           className="w-full object-cover rounded"
                         />
                       )}
 
                       {/* Nome */}
-                      <h2 className="text-2xl font-semibold mt-2 text-center">{produto.nome}</h2>
+                      <h2 className="text-2xl font-semibold mt-2 text-center">{prod.nome}</h2>
 
                       {/* Descrição */}
                       <p className="text-gray-600 text-sm mt-1 mx-5">
-                        {produto.descricao}
+                        {prod.descricao}
                       </p>
 
                       <div className="flex justify-between items-center py-6">
                         {/* Preço */}
                         <button className="text-white bg-red-600 font-bold text-lg px-3 py-1 rounded-lg 
-                        mx-5 text-start hover:cursor-pointer hover:bg-red-800" 
-                        onClick={() => excluir(produto.id)}>
+                        mx-5 text-start hover:cursor-pointer hover:bg-red-800" >
                           Deletar
                         </button>
 
                         {/* Preço */}
                         <p className="text-green-600 font-bold text-lg mx-5 text-end">
-                          R$ {produto.preco}
+                          R$ {prod.preco}
                         </p>
                       </div>
                     </div>
-                  </Link>
                 ))}
               </div>
-            ) : (
-              <p>Nenhum produto encontrado.</p>
-            )}
           </article>
             
         </main>
