@@ -32,19 +32,25 @@ export default function GerenciarProduto (){
 
         setProduto(data)
       }
-
       buscarProdutos();
     }, []);
 
+      
+    async function deletarProduto(id: number) {        
+      const url = `http://localhost:8000/produtos/${id}/`;
+      
+      const response = await fetch(url, {
+        method: "DELETE",
+      });
+      document.location.reload(); //Atualiza a página após a exclusão do produto
+    }
 
 
     return(
         <main>
-            
-          <h1 className="text-center font-bold text-3xl my-10">Gerenciamento Produtos</h1>
 
           <nav>
-            <ul className="flex gap-5 justify-center">
+            <ul className="flex gap-5 mt-5 justify-center">
               <li>
                 <Link href="/">
                   <button className="text-center  rounded-md w-50 py-3 mb-20 text-bold bg-green-700
@@ -63,13 +69,15 @@ export default function GerenciarProduto (){
               </li>
             </ul>
           </nav>
+            
+                    <h1 className="text-center font-bold text-3xl my-10">Gerenciamento Produtos</h1>
           
           <article className="">
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-2/3 m-auto gap-6">
                 
                 {produto.map((prod : Produto) => (
-
+                    <Link href={`/dashboard/gerenciarProduto/${prod.id}`} >                    
                     <div key={prod.id} className="rounded-lg shadow-lg hover:shadow-2xl transition">
                       {/* Imagem */}
                       {prod.imagem && (
@@ -91,7 +99,7 @@ export default function GerenciarProduto (){
                       <div className="flex justify-between items-center py-6">
                         {/* Preço */}
                         <button className="text-white bg-red-600 font-bold text-lg px-3 py-1 rounded-lg 
-                        mx-5 text-start hover:cursor-pointer hover:bg-red-800" >
+                        mx-5 text-start hover:cursor-pointer hover:bg-red-800" onClick={() => deletarProduto(prod.id)}>
                           Deletar
                         </button>
 
@@ -101,6 +109,7 @@ export default function GerenciarProduto (){
                         </p>
                       </div>
                     </div>
+                    </Link>
                 ))}
               </div>
           </article>
