@@ -4,7 +4,7 @@ interface Produto {
   descricao: string;
   preco: string;
   imagem: string; // URL da imagem
-  ingredientes: string[]; // Lista de ingredientes
+  ingredientes_detalhe: string[]; // Lista de ingredientes
 }
 
 // app/page.js
@@ -44,7 +44,7 @@ export default async function Home() {
 
               {/* Descrição */}
               <p className="text-gray-600 text-md mx-5 mt-1">
-                {produto.descricao}
+                {produto.ingredientes_detalhe.map((ing: any) => ing.nome).join(", ")}
               </p>
 
               {/* Preço */}

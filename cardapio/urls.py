@@ -7,8 +7,8 @@ from rest_framework.routers import DefaultRouter
 from cardapio.views import ProdutoViewSet, IngredienteViewSet
 
 router = DefaultRouter()
-router.register(r'produtos', ProdutoViewSet)
-router.register(r'ingredientes', IngredienteViewSet)
+router.register(r'produtos', ProdutoViewSet, basename='produto')
+router.register(r'ingredientes', IngredienteViewSet, basename='ingrediente')
 
 
 app_name = 'cardapio'

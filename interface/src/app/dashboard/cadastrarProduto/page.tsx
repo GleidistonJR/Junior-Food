@@ -1,120 +1,145 @@
-"use client"
-import { useState, useEffect } from "react"
-import Link from "next/link"
+'use client';
 
-export default function CriarProduto() {
-  const [ingredientes, setIngredientes] = useState([])
-  const [formData, setFormData] = useState({
-    nome: "",
-    preco: "",
-    imagem: null,
-    ingredientes: []
-  })
+import { useEffect, useState } from "react";
 
-  // Buscar ingredientes da API Django
+export default function NovoProdutoPage() {
+  const [nome, setNome] = useState("");
+  const [preco, setPreco] = useState("");
+  const [imagem, setImagem] = useState<File | null>(null);
+  const [ingredientes, setIngredientes] = useState<any[]>([]);
+  const [selecionados, setSelecionados] = useState<number[]>([]);
+  const [preview, setPreview] = useState<string | null>(null);
+  const [erro, setErro] = useState<string | null>(null);
+
+  // Buscar ingredientes ao carregar a página
   useEffect(() => {
     fetch("http://localhost:8000/ingredientes/")
-      .then(res => res.json())
-      .then(data => setIngredientes(data))
-  }, [])
+      .then((res) => res.json())
+      .then((data) => setIngredientes(data))
+      .catch(() => setErro("Erro ao carregar ingredientes"));
+  }, []);
 
-  // Atualiza os dados do form
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value })
+  // Alternar checkbox (verifica o check e adiciona ou remove da lista)
+  function toggleIngrediente(id: number) {
+    setSelecionados((prev) =>
+      prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]
+    );
   }
 
-  // Seleciona ingredientes (checkboxes)
-  const handleCheck = (id) => {
-    let novaLista = [...formData.ingredientes]
-    if (novaLista.includes(id)) {
-      novaLista = novaLista.filter(i => i !== id)
+  // Preview de imagem
+  function onChangeImagem(file: File | null) {
+    setImagem(file);
+    if (file) {
+      setPreview(URL.createObjectURL(file));
     } else {
-      novaLista.push(id)
+      setPreview(null);
     }
-    setFormData({ ...formData, ingredientes: novaLista })
   }
 
-  // Envia para o backend Django
-  const handleSubmit = async (e) => {
-    e.preventDefault()
+  // Envio do formulário
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    setErro(null);
 
-    const data = new FormData()
-    data.append("nome", formData.nome)
-    data.append("preco", formData.preco)
-    if (formData.imagem) data.append("imagem", formData.imagem)
-    formData.ingredientes.forEach(id => data.append("ingredientes", id))
+    if (!nome || !preco || selecionados.length === 0) {
+      setErro("Preencha todos os campos e selecione ingredientes");
+      return;
+    }
 
-    await fetch("http://localhost:8000/produtos/", {
+    const formData = new FormData();
+    formData.append("nome", nome);
+    formData.append("preco", preco.replace(",", ".")); // troca vírgula por ponto
+    if (imagem) formData.append("imagem", imagem);
+
+    // Adiciona os ingredientes (um por vez)
+    selecionados.forEach((id) => {
+      formData.append("ingredientes", String(id));
+    });
+
+    const res = await fetch("http://localhost:8000/produtos/", {
       method: "POST",
-      body: data
-    })
+      body: formData,
+    });
+
+    if (!res.ok) {
+      const txt = await res.text();
+      setErro("Erro ao salvar: " + txt);
+      return;
+    }
+
+    alert("Produto criado com sucesso!");
+    setNome("");
+    setPreco("");
+    setImagem(null);
+    setPreview(null);
+    setSelecionados([]);
   }
 
-    return(
-        <main>
-            <h1 className="text-center mt-10 font-bold text-5xl">Cadastrar Produto</h1>
+  return (
+    <div className="max-w-xl mx-auto p-6">
+      <h1 className="text-2xl font-bold mb-4">Cadastrar Produto</h1>
 
-            <form action="http://127.0.0.1:8000/produtos/" method="POST" encType="multipart/form-data"
-             className="max-w-md mx-auto bg-white p-6 rounded-lg shadow-md">
+      {erro && <p className="text-red-600 mb-2">{erro}</p>}
 
+      <form onSubmit={handleSubmit} className="space-y-4">
+        {/* Nome */}
+        <div>
+          <label className="block font-medium">Nome</label>
+          <input
+            className="border rounded w-full p-2"
+            value={nome}
+            onChange={(e) => setNome(e.target.value)}
+          />
+        </div>
+
+        {/* Preço */}
+        <div>
+          <label className="block font-medium">Preço</label>
+          <input
+            className="border rounded w-full p-2"
+            value={preco}
+            onChange={(e) => setPreco(e.target.value)}
+            placeholder="Ex: 25,90"
+          />
+        </div>
+
+        {/* Imagem */}
+        <div>
+          <label className="block font-medium">Imagem</label>
+          <input
+            type="file"
+            accept="image/*"
+            onChange={(e) => onChangeImagem(e.target.files?.[0] ?? null)}
+          />
+          {preview && (
+            <img src={preview} alt="preview" className="h-32 mt-2 object-contain" />
+          )}
+        </div>
+
+        {/* Ingredientes */}
+        <div>
+          <label className="block font-medium mb-2">Ingredientes</label>
+          <div className="space-y-2">
+            {ingredientes.map((ing) => (
+              <label key={ing.id} className="flex items-center gap-2">
                 <input
-                    type="text"
-                    name="nome"
-                    placeholder="Nome do produto"
-                    value={formData.nome}
-                    onChange={handleChange}
-                    className="border p-2 w-full"
+                  type="checkbox"
+                  checked={selecionados.includes(ing.id)}
+                  onChange={() => toggleIngrediente(ing.id)}
                 />
+                {ing.nome} (R$ {ing.preco})
+              </label>
+            ))}
+          </div>
+        </div>
 
-                <input
-                    type="number"
-                    step="0.01"
-                    name="preco"
-                    placeholder="Preço"
-                    value={formData.preco}
-                    onChange={handleChange}
-                    className="border p-2 w-full"
-                />
-
-                <input
-                    type="file"
-                    name="imagem"
-                    onChange={(e) => setFormData({ ...formData, imagem: e.target.files[0] })}
-                    className="border p-2 w-full"
-                />
-
-                <div>
-                    <p className="font-semibold">Ingredientes:</p>
-                    {ingredientes.map((ing) => (
-                    <label key={ing.id} className="block">
-                        <input
-                        type="checkbox"
-                        checked={formData.ingredientes.includes(ing.id)}
-                        onChange={() => handleCheck(ing.id)}
-                        />
-                        {ing.nome}
-                    </label>
-                    ))}
-                </div>
-
-                <ul className="flex gap-5 justify-center">
-                    <li>
-                        <Link href="/dashboard/">
-                            <button className="text-center  rounded-md w-50 py-3 mb-20 text-bold bg-gray-500 text-white
-                            hover:cursor-pointer hover:bg-gray-600" >
-                                    Voltar
-                            </button>
-                        </Link>
-                    </li>
-                    <li>
-                        <button className="text-center rounded-md w-50 py-3 mb-20 text-bold bg-green-700 text-white
-                        hover:cursor-pointer hover:bg-green-800" type="submit">
-                                Cadastrar
-                        </button>
-                    </li>
-                </ul>
-            </form>
-            
-        </main>
-    )
+        <button
+          type="submit"
+          className="bg-blue-600 text-white px-4 py-2 rounded"
+        >
+          Salvar
+        </button>
+      </form>
+    </div>
+  );
 }

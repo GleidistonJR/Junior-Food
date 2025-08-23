@@ -9,10 +9,14 @@ class IngredienteSerializer(serializers.ModelSerializer):
 
 class ProdutoSerializer(serializers.ModelSerializer):
     ingredientes = serializers.PrimaryKeyRelatedField(
-    queryset=Ingrediente.objects.all(),
-    many=True
+        queryset=Ingrediente.objects.all(),
+        many=True
     )
-    
+    # Para leitura: ingredientes detalhados (opcional)
+    ingredientes_detalhe = IngredienteSerializer(
+        source='ingredientes', many=True, read_only=True
+    )
+
     class Meta:
         model = Produto
         fields = '__all__'

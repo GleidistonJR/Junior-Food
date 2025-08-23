@@ -3,7 +3,7 @@
 interface Produto {
   id: number;
   nome: string;
-  descricao: string;
+  ingredientes_detalhe: string[];
   preco: string;
   imagem?: string;
 }
@@ -100,7 +100,7 @@ export default function GerenciarProduto (){
 
                       {/* Descrição */}
                       <p className="text-gray-600 text-sm mt-1 mx-5">
-                        {prod.descricao}
+                        {prod.ingredientes_detalhe.map((ing: any) => ing.nome).join(", ")}
                       </p>
 
 
