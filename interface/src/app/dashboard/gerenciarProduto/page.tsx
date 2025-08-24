@@ -48,29 +48,8 @@ export default function GerenciarProduto (){
 
     return(
         <main>
-
-          <nav>
-            <ul className="flex gap-5 mt-5 justify-center">
-              <li>
-                <Link href="/">
-                  <button className="text-center  rounded-md w-50 py-3 mb-20 text-bold bg-green-700
-                  text-white hover:cursor-pointer hover:bg-green-900">
-                  Home
-                  </button>
-                </Link>
-              </li>
-              <li>
-                  <Link href="/dashboard">
-                    <button className="text-center rounded-md w-50 py-3 mb-20 text-bold bg-blue-700 
-                    text-white hover:cursor-pointer hover:bg-blue-900">
-                      Dashboard
-                    </button>
-                  </Link>
-              </li>
-            </ul>
-          </nav>
-            
-                    <h1 className="text-center font-bold text-3xl my-10">Gerenciamento Produtos</h1>
+ 
+          <h1 className="text-center font-bold text-3xl my-10">Gerenciamento Produtos</h1>
           
           <article className="">
 
@@ -113,6 +92,27 @@ export default function GerenciarProduto (){
                 ))}
               </div>
           </article>
+
+          <nav className="mt-10">
+            <ul className="flex gap-5 mt-5 justify-center">
+              <li>
+                  <Link href="/dashboard">
+                    <button className="rounded-lg w-50 py-3 mb-20 text-bold bg-gray-500 
+                    text-white hover:cursor-pointer">
+                      Voltar
+                    </button>
+                  </Link>
+              </li>
+              <li>
+                <Link href="/dashboard/gerenciarIngrediente">
+                  <button className="rounded-lg w-50 py-3 mb-20 text-bold bg-green-700
+                  text-white hover:cursor-pointer">
+                  Gerenciar Ingredientes
+                  </button>
+                </Link>
+              </li>
+            </ul>
+          </nav>
             
         </main>
     )

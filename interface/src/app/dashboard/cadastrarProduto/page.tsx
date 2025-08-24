@@ -1,5 +1,6 @@
 'use client';
 
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export default function NovoProdutoPage() {
@@ -133,12 +134,23 @@ export default function NovoProdutoPage() {
           </div>
         </div>
 
-        <button
-          type="submit"
-          className="bg-blue-600 text-white px-4 py-2 rounded"
-        >
-          Salvar
-        </button>
+        <div className="flex flex-row gap-5 justify-center">
+
+          <Link href="/dashboard">
+          <button className="bg-gray-500 w-50 py-3 rounded-lg text-white
+          hover:cursor-pointer">
+            Voltar
+          </button>
+          </Link>
+          <button
+            type="submit"
+            className="bg-green-700 text-white w-50 py-3 rounded-lg
+            hover:cursor-pointer"
+            >
+            Cadastrar
+          </button>
+        
+        </div>
       </form>
     </div>
   );

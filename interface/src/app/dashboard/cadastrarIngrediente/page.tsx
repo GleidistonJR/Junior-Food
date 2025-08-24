@@ -25,15 +25,15 @@ export default function CadastrarIngrediente (){
                 <ul className="flex gap-5 justify-center">
                     <li>
                         <Link href="/dashboard/">
-                            <button className="text-center  rounded-md w-50 py-3 mb-20 text-bold bg-gray-500 text-white
-                            hover:cursor-pointer hover:bg-gray-600" >
-                                    Voltar
-                            </button>
+                        <button className="rounded-lg w-50 py-3 mb-20 bg-gray-500 text-white
+                        hover:cursor-pointer">
+                                Voltar
+                        </button>
                         </Link>
                     </li>
                     <li>
-                        <button className="text-center rounded-md w-50 py-3 mb-20 text-bold bg-green-700 text-white
-                        hover:cursor-pointer hover:bg-green-800" type="submit">
+                        <button className="rounded-lg w-50 py-3 mb-20 bg-green-700 text-white
+                        hover:cursor-pointer" type="submit">
                                 Cadastrar
                         </button>
                     </li>

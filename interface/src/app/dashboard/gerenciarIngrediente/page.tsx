@@ -43,28 +43,6 @@ export default function Gerenciaringrediente (){
         <main>
             
           <h1 className="text-center font-bold text-3xl my-10">Gerenciamento ingredientes</h1>
-
-          <nav>
-            <ul className="flex gap-5 justify-center">
-              <li>
-                <Link href="/">
-                  <button className="text-center  rounded-md w-50 py-3 mb-20 text-bold bg-green-700
-                  text-white hover:cursor-pointer hover:bg-green-900">
-                  Home
-                  </button>
-                </Link>
-              </li>
-              <li>
-                  <Link href="/dashboard/">
-                    <button className="text-center rounded-md w-50 py-3 mb-20 text-bold bg-blue-700 
-                    text-white hover:cursor-pointer hover:bg-blue-900">
-                      Dashboard
-
-                    </button>
-                  </Link>
-              </li>
-            </ul>
-          </nav>
           
           <article className="">
 
@@ -109,6 +87,27 @@ export default function Gerenciaringrediente (){
               <p>Nenhum ingrediente encontrado.</p>
             )}
           </article>
+
+          <nav className="mt-10">
+            <ul className="flex gap-5 justify-center">
+              <li>
+                  <Link href="/dashboard/">
+                    <button className="text-center rounded-md w-50 py-3 mb-20 bg-gray-500 
+                    text-white hover:cursor-pointer">
+                      Voltar
+                    </button>
+                  </Link>
+              </li>
+              <li>
+                <Link href="/dashboard/gerenciarProduto">
+                  <button className="text-center  rounded-md w-50 py-3 mb-20 bg-green-700
+                  text-white hover:cursor-pointer">
+                    Gerenciar Produtos
+                  </button>
+                </Link>
+              </li>
+            </ul>
+          </nav>
             
         </main>
     )
