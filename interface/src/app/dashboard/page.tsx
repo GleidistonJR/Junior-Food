@@ -21,7 +21,7 @@ export default async function Dashboard (){
                     <ul className="h-full flex flex-col gap-2 p-5 shadow-xl bg-gray-200">
                         <li>
                             <Link href="dashboard/cadastrarIngrediente">
-                                <button className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:cursor-pointer">
+                                <button className="flex items-center w-full gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:cursor-pointer">
                                     <PlusCircleIcon className="w-5" />
                                     Cadastrar Ingredientes
                                 </button>
@@ -30,7 +30,7 @@ export default async function Dashboard (){
 
                         <li>
                             <Link href="dashboard/cadastrarProduto">
-                                <button className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:cursor-pointer">
+                                <button className="flex items-center w-full gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:cursor-pointer">
                                 <CubeIcon className="w-5" />
                                 Cadastrar Produtos
                                 </button>
@@ -39,7 +39,7 @@ export default async function Dashboard (){
                         
                         <li>
                             <Link href="dashboard/gerenciarIngrediente">
-                                <button className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:cursor-pointer">
+                                <button className="flex items-center w-full gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:cursor-pointer">
                                     <ClipboardDocumentListIcon className="w-5" />
                                     Gerenciar Ingredientes
                                 </button>
@@ -48,7 +48,7 @@ export default async function Dashboard (){
 
                         <li>
                             <Link href="dashboard/gerenciarProduto">
-                                <button className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:cursor-pointer">
+                                <button className="flex items-center w-full gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:cursor-pointer">
                                     <WrenchScrewdriverIcon className="w-5" />
                                     Gerenciar Produtos
 
