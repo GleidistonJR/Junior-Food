@@ -1,5 +1,6 @@
 'use client'
 
+import Modal from "@/components/modal"; // importando seu modal já pronto
 import { useState, useEffect } from "react";
 
 type Produtos = Produto[];
@@ -17,6 +18,18 @@ interface Produto {
 export default function Home() {
 
   const [produtos, setProdutos] = useState<Produtos>([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [produtoSelecionado, setProdutoSelecionado] = useState<Produto | null>(null);
+
+  function abrirModal(produto: Produto){
+    setProdutoSelecionado(produto);
+    setIsModalOpen(true);
+  }
+
+  function fecharModal(){
+    setIsModalOpen(false);
+    setProdutoSelecionado(null);
+  }
   
   // Fazendo requisição para sua API Django
   useEffect(() => {
@@ -44,6 +57,7 @@ export default function Home() {
             <div
               key={produto.id}
               className="rounded-lg shadow-lg hover:shadow-xl transition"
+              onClick={() => abrirModal(produto)}
             >
               {/* Imagem */}
               {produto.imagem && (
@@ -72,6 +86,27 @@ export default function Home() {
       ) : (
         <p>Nenhum produto encontrado.</p>
       )}
+
+      {/* Aqui você usa o seu Modal já existente */}
+      <Modal isOpen={isModalOpen} onClose={fecharModal}>
+        {produtoSelecionado && (
+          <div>
+            <h2 className="text-2xl font-bold mb-4">{produtoSelecionado.nome}</h2>
+            <img
+              src={produtoSelecionado.imagem}
+              alt={produtoSelecionado.nome}
+              className="w-full rounded mb-4"
+            />
+            <p className="text-gray-600 mb-2">{produtoSelecionado.descricao}</p>
+            <p className="text-green-700 font-bold text-xl">
+              R$ {produtoSelecionado.preco}
+            </p>
+            <p className="mt-2 text-sm text-gray-500">
+              Ingredientes: {produtoSelecionado.ingredientes_detalhe.join(", ")}
+            </p>
+          </div>
+        )}
+      </Modal>
     </main>
   );
 }
