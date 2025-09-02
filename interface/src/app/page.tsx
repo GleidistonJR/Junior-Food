@@ -1,3 +1,9 @@
+'use client'
+
+import { useState, useEffect } from "react";
+
+type Produtos = Produto[];
+
 interface Produto {
   id: number;
   nome: string;
@@ -8,14 +14,23 @@ interface Produto {
 }
 
 // app/page.js
-export default async function Home() {
-  // Fazendo requisição para sua API Django
-  const res = await fetch("http://localhost:8000/produtos/", {
-    cache: "no-store" // garante que os dados são sempre atualizados
-  });
+export default function Home() {
 
-  // Convertendo resposta para JSON
-  const produtos: Produto[] = await res.json();
+  const [produtos, setProdutos] = useState<Produtos>([]);
+  
+  // Fazendo requisição para sua API Django
+  useEffect(() => {
+    async function buscarIngredientes() {
+      const url = "http://localhost:8000/produtos/";
+          
+      const response = await fetch(url, {
+          cache: "no-store" // garante que os dados são sempre atualizados
+      });
+      const res: Produtos = await response.json()
+      setProdutos(res)
+    }
+    buscarIngredientes();
+  }, []);
 
   return (
     <main className="p-8">
