@@ -87,7 +87,7 @@ export default function NovoProdutoPage() {
         <div>
           <label className="block font-medium">Nome</label>
           <input
-            className="border rounded w-full p-2"
+            className="border border-gray-400 rounded w-full p-2"
             value={nome}
             onChange={(e) => setNome(e.target.value)}
           />
@@ -97,7 +97,7 @@ export default function NovoProdutoPage() {
         <div>
           <label className="block font-medium">Preço</label>
           <input
-            className="border rounded w-full p-2"
+            className="border border-gray-400 rounded w-full p-2"
             value={preco}
             onChange={(e) => setPreco(e.target.value)}
             placeholder="Ex: 25,90"
@@ -111,6 +111,7 @@ export default function NovoProdutoPage() {
             type="file"
             accept="image/*"
             onChange={(e) => onChangeImagem(e.target.files?.[0] ?? null)}
+            className="border border-gray-400 rounded-lg w-full p-2 hover:cursor-pointer"
           />
           {preview && (
             <img src={preview} alt="preview" className="h-32 mt-2 object-contain" />
@@ -120,13 +121,14 @@ export default function NovoProdutoPage() {
         {/* Ingredientes */}
         <div>
           <label className="block font-medium mb-2">Ingredientes</label>
-          <div className="space-y-2">
+          <div className="space-y-2 border border-gray-400 rounded w-full p-2">
             {ingredientes.map((ing) => (
-              <label key={ing.id} className="flex items-center gap-2">
+              <label key={ing.id} className="flex items-center gap-2 ">
                 <input
                   type="checkbox"
                   checked={selecionados.includes(ing.id)}
                   onChange={() => toggleIngrediente(ing.id)}
+                  
                 />
                 {ing.nome} (R$ {ing.preco})
               </label>

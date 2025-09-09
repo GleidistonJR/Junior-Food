@@ -1,0 +1,18 @@
+CharField → texto curto
+
+TextField → texto longo
+
+IntegerField / PositiveIntegerField → número inteiro
+
+DecimalField → valores com dinheiro
+
+DateTimeField → data e hora
+
+BooleanField → verdadeiro/falso
+
+
+ForeignKey → relação "muitos para um" (ex: cada pedido tem 1 cliente).
+
+ManyToManyField → relação "muitos para muitos" (ex: um produto pode ter vários ingredientes).
+
+OneToOneField → relação "um para um" (ex: perfil de usuário).

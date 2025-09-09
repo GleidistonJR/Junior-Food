@@ -7,7 +7,7 @@ import Link from "next/link";
 interface Produto {
   id: number;
   nome: string;
-  descricao: string;
+  ingredientes: string[];
   preco: string;
   imagem: string; // URL da imagem
 }
@@ -49,6 +49,7 @@ export default function GerenciarProduto() {
       
       const data = await res.json();
       setProduto(data);
+      setSelecionados(data.ingredientes);
 
     }
 
@@ -85,7 +86,9 @@ export default function GerenciarProduto() {
     setErro(null);
 
     const formData = new FormData();
-    formData.append("nome", nome);
+    if(nome){
+      formData.append("nome", nome);
+    }
     if(preco){
       formData.append("preco", preco.replace(",", ".")); // troca vírgula por ponto
     }
@@ -113,6 +116,7 @@ export default function GerenciarProduto() {
     setImagem(null);
     setPreview(null);
     setSelecionados([]);
+    window.history.back();
   }
 
 
@@ -134,11 +138,10 @@ export default function GerenciarProduto() {
 
         <div className="mb-3">
             <label htmlFor="produtoDescricao">Ingredientes</label>
-            <div className="space-y-2">
+            <div className="space-y-2  p-5 border border-gray-400 rounded-lg">
             {ingredientes.map((ing) => (
               <label key={ing.id} className="flex items-center gap-2">
-                <input
-                  type="checkbox"
+                <input type="checkbox"
                   checked={selecionados.includes(ing.id)}
                   onChange={() => toggleIngrediente(ing.id)}
                 />
