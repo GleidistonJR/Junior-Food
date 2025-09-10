@@ -15,9 +15,9 @@ export default async function Dashboard (){
     return(
         <main>
             
-            <article className="grid grid-cols-5 ">
+            <article className="grid grid-cols-1 lg:grid-cols-5 ">
 
-                <nav className=" col-1">
+                <nav className="col-span-1">
                     <ul className="h-full flex flex-col gap-2 p-5 shadow-xl bg-gray-200">
                         <li>
                             <Link href="dashboard/cadastrarIngrediente">
@@ -58,10 +58,10 @@ export default async function Dashboard (){
                     </ul>
                 </nav>
 
-                <aside className="col-span-4 px-10">
+                <aside className="col-span-2 lg:col-span-4 px-10">
                     <h1 className="text-center mt-10 font-bold text-5xl">DashBoard</h1>
                     
-                    <div className="grid grid-cols-3 gap-6 px-10">
+                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 px-10">
                         <div className="">
                             <h2 className="text-center mt-10 font-bold text-3xl">Graficos</h2>
                             <p>
