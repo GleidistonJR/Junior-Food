@@ -1,4 +1,6 @@
+'use client'
 import Link from "next/link";
+import GraficoPedidos from "@/components/graficos";
 
 import { 
   PlusCircleIcon, 
@@ -6,6 +8,8 @@ import {
   ClipboardDocumentListIcon, 
   WrenchScrewdriverIcon 
 } from "@heroicons/react/24/outline";
+
+
 
 
 export default async function Dashboard (){
@@ -62,30 +66,12 @@ export default async function Dashboard (){
                     <h1 className="text-center mt-10 font-bold text-5xl">DashBoard</h1>
                     
                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 px-10">
-                        <div className="">
-                            <h2 className="text-center mt-10 font-bold text-3xl">Graficos</h2>
-                            <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum sed cumque possimus aliquam, natus temporibus nam pariatur iure quae ratione accusantium id, assumenda repudiandae nostrum, laudantium necessitatibus non quis officia?
-                            </p>
+                        <div className="col-span-2">
+                            <h2 className="text-center mt-10 font-bold text-3xl">Pedidos Efetuados</h2>
+                            <GraficoPedidos />
+                            
                         </div>
-                        <div>
-                            <h2 className="text-center mt-10 font-bold text-3xl">Informações</h2>
-                            <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum sed cumque possimus aliquam, natus temporibus nam pariatur iure quae ratione accusantium id, assumenda repudiandae nostrum, laudantium necessitatibus non quis officia?
-                            </p>
-                        </div>
-                        <div>
-                            <h2 className="text-center mt-10 font-bold text-3xl">Dados</h2>
-                            <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum sed cumque possimus aliquam, natus temporibus nam pariatur iure quae ratione accusantium id, assumenda repudiandae nostrum, laudantium necessitatibus non quis officia?
-                            </p>
-                        </div>
-                        <div>
-                            <h2 className="text-center mt-10 font-bold text-3xl">Etc...</h2>
-                            <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum sed cumque possimus aliquam, diandae nostrum, laudantium necessitatibus non quis officia?
-                            </p>
-                        </div>
+                        
                     </div>
 
                 </aside>
