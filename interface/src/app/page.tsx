@@ -31,7 +31,7 @@ export default function Home() {
   const [produtoSelecionado, setProdutoSelecionado] = useState<Produto | null>(null);
   const [quantidadeSelecionado, setQuantidadeSelecionado] = useState(1);
   const [adiconaisSelecionados, setAdicionaisSelecionados] = useState<number[]>([]);
-  const [observacao, setObservacao] = useState<number[]>('teste observacao');
+  const [observacao, setObservacao] = useState('teste observacao');
   
   function abrirModal(produto: Produto){
     setProdutoSelecionado(produto);
@@ -66,7 +66,7 @@ export default function Home() {
       return;
     }
 
-    alert("Produto criado com sucesso!");
+    alert("Produto adicionado ao carrinho com sucesso!");
     setProdutoSelecionado(null);
     setQuantidadeSelecionado(1);
     setAdicionaisSelecionados([]);
