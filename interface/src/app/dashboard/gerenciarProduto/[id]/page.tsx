@@ -29,7 +29,7 @@ export default function GerenciarProduto() {
 
   // Buscar ingredientes ao carregar a página
   useEffect(() => {
-    fetch("http://localhost:8000/ingredientes/")
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/ingredientes/`)
     .then((res) => res.json())
     .then((data) => setIngredientes(data))
     .catch(() => setErro("Erro ao carregar ingredientes"));
@@ -40,7 +40,7 @@ export default function GerenciarProduto() {
     async function fetchProduto() {
       console.log("Buscando produto com id:", id);
       
-      const res = await fetch(`http://localhost:8000/produtos/${id}`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/produtos/${id}`, {
           headers: {
             "Accept": "application/json"
           },
@@ -99,7 +99,7 @@ export default function GerenciarProduto() {
       formData.append("ingredientes", String(id));
     });
 
-    const res = await fetch(`http://localhost:8000/produtos/${id}/`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/produtos/${id}/`, {
       method: "PATCH",
       body: formData,
     });

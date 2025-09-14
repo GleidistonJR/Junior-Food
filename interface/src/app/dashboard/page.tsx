@@ -1,6 +1,6 @@
 'use client'
 import Link from "next/link";
-import GraficoPedidos from "@/components/graficos";
+import {GraficoPedidos, RelatorioPedidos, RelatorioFinanceiro} from "@/components/graficos";
 
 import { 
   PlusCircleIcon, 
@@ -25,7 +25,7 @@ export default async function Dashboard (){
                     <ul className="h-full flex flex-col gap-2 p-5 shadow-xl bg-gray-200">
                         <li>
                             <Link href="dashboard/cadastrarIngrediente">
-                                <button className="flex items-center w-full gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:cursor-pointer">
+                                <button className="flex items-center w-full gap-2 bg-gray-600 text-white px-4 py-2 rounded-lg hover:cursor-pointer">
                                     <PlusCircleIcon className="w-5" />
                                     Cadastrar Ingredientes
                                 </button>
@@ -34,7 +34,7 @@ export default async function Dashboard (){
 
                         <li>
                             <Link href="dashboard/cadastrarProduto">
-                                <button className="flex items-center w-full gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:cursor-pointer">
+                                <button className="flex items-center w-full gap-2 bg-gray-600 text-white px-4 py-2 rounded-lg hover:cursor-pointer">
                                 <CubeIcon className="w-5" />
                                 Cadastrar Produtos
                                 </button>
@@ -43,7 +43,7 @@ export default async function Dashboard (){
                         
                         <li>
                             <Link href="dashboard/gerenciarIngrediente">
-                                <button className="flex items-center w-full gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:cursor-pointer">
+                                <button className="flex items-center w-full gap-2 bg-gray-600 text-white px-4 py-2 rounded-lg hover:cursor-pointer">
                                     <ClipboardDocumentListIcon className="w-5" />
                                     Gerenciar Ingredientes
                                 </button>
@@ -52,7 +52,7 @@ export default async function Dashboard (){
 
                         <li>
                             <Link href="dashboard/gerenciarProduto">
-                                <button className="flex items-center w-full gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:cursor-pointer">
+                                <button className="flex items-center w-full gap-2 bg-gray-600 text-white px-4 py-2 rounded-lg hover:cursor-pointer">
                                     <WrenchScrewdriverIcon className="w-5" />
                                     Gerenciar Produtos
 
@@ -63,13 +63,20 @@ export default async function Dashboard (){
                 </nav>
 
                 <aside className="col-span-2 lg:col-span-4 px-10">
-                    <h1 className="text-center mt-10 font-bold text-5xl">DashBoard</h1>
                     
                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 px-10">
+                        
                         <div className="col-span-2">
-                            <h2 className="text-center mt-10 font-bold text-3xl">Pedidos Efetuados</h2>
-                            <GraficoPedidos />
-                            
+                            <h2 className="text-center mt-10 font-bold text-3xl">Grafico Pedidos</h2>
+                            <GraficoPedidos />                            
+                        </div>
+                        <div className="col-span-1 ">
+                            <h2 className="text-center mt-10 font-bold text-3xl">Relatorio Pedidos</h2>
+                            <RelatorioPedidos />
+                        </div>
+                        <div className="col-span-1">
+                            <h2 className="text-center mt-10 font-bold text-3xl">Relatorio Financeiro</h2>
+                            <RelatorioFinanceiro />
                         </div>
                         
                     </div>

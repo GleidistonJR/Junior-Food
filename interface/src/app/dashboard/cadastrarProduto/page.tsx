@@ -14,7 +14,7 @@ export default function NovoProdutoPage() {
 
   // Buscar ingredientes ao carregar a página
   useEffect(() => {
-    fetch("http://localhost:8000/ingredientes/")
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/ingredientes/`)
       .then((res) => res.json())
       .then((data) => setIngredientes(data))
       .catch(() => setErro("Erro ao carregar ingredientes"));
@@ -57,7 +57,7 @@ export default function NovoProdutoPage() {
       formData.append("ingredientes", String(id));
     });
 
-    const res = await fetch("http://localhost:8000/produtos/", {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/produtos/`, {
       method: "POST",
       body: formData,
     });

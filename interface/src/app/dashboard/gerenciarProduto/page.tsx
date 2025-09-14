@@ -19,7 +19,7 @@ export default function GerenciarProduto (){
 
     useEffect(() =>{
       async function buscarProdutos() {        
-        const url = "http://localhost:8000/produtos";
+        const url = `${process.env.NEXT_PUBLIC_API_URL}/produtos`;
         
         const response = await fetch(url, {
           headers: {
@@ -37,7 +37,7 @@ export default function GerenciarProduto (){
 
       
     async function deletarProduto(id: number) {        
-      const url = `http://localhost:8000/produtos/${id}/`;
+      const url = `${process.env.NEXT_PUBLIC_API_URL}/produtos/${id}/`;
       
       const response = await fetch(url, {
         method: "DELETE",

@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-qmz%w__0d+@m=e$t-sy_d$(t-0t)yfc=nqx=!incz+$sv57u7x
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'cardapio',
+    'carrinho',
     'pedidos',
     "corsheaders",
 ]

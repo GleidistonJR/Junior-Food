@@ -2,6 +2,7 @@
 
 import Modal from "@/components/modal"; // importando seu modal já pronto
 import { useState, useEffect } from "react";
+import { ShoppingCartIcon} from '@heroicons/react/24/solid'
 
 type Produtos = Produto[];
 
@@ -25,10 +26,13 @@ export default function Home() {
 
   const [produtos, setProdutos] = useState<Produtos>([]);
   const [ingredientes, setIngredientes] = useState<Ingredientes>([]);
-  const [selecionados, setSelecionados] = useState<number[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [produtoSelecionado, setProdutoSelecionado] = useState<Produto | null>(null);
 
+  const [produtoSelecionado, setProdutoSelecionado] = useState<Produto | null>(null);
+  const [quantidadeSelecionado, setQuantidadeSelecionado] = useState(1);
+  const [adiconaisSelecionados, setAdicionaisSelecionados] = useState<number[]>([]);
+  const [observacao, setObservacao] = useState<number[]>('teste observacao');
+  
   function abrirModal(produto: Produto){
     setProdutoSelecionado(produto);
     setIsModalOpen(true);
@@ -37,11 +41,41 @@ export default function Home() {
   function fecharModal(){
     setIsModalOpen(false);
     setProdutoSelecionado(null);
+    setAdicionaisSelecionados([]);
+  }
+  
+  async function adicionarCarrinho(){
+    const body = {
+      produto: produtoSelecionado?.id,  // ID do produto
+      quantidade: quantidadeSelecionado,
+      adicionais: adiconaisSelecionados,  // array de IDs
+      observacoes: observacao
+    };
+
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/carrinho-item/`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(body)
+    });
+
+    if (!res.ok) {
+      const txt = await res.text();
+      alert("Erro ao salvar: " + txt);
+      return;
+    }
+
+    alert("Produto criado com sucesso!");
+    setProdutoSelecionado(null);
+    setQuantidadeSelecionado(1);
+    setAdicionaisSelecionados([]);
+    setObservacao([]);
   }
   
   // Alternar checkbox (verifica o check e adiciona ou remove da lista)
   function toggleIngrediente(id: number) {
-    setSelecionados((prev) =>
+    setAdicionaisSelecionados((prev) =>
       prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]
     );
   }
@@ -49,7 +83,7 @@ export default function Home() {
   // Fazendo requisição para sua API Django
   useEffect(() => {
     async function buscarProdutos() {
-      const url = "http://localhost:8000/produtos/";
+      const url = `${process.env.NEXT_PUBLIC_API_URL}/produtos/`;
           
       const response = await fetch(url, {
           cache: "no-store" // garante que os dados são sempre atualizados
@@ -62,12 +96,12 @@ export default function Home() {
 
   useEffect(() => {
     async function buscarIngredientes() {
-      const url = "http://localhost:8000/ingredientes/";
+      const url = `${process.env.NEXT_PUBLIC_API_URL}/ingredientes/`;
           
       const response = await fetch(url, {
           cache: "no-store" // garante que os dados são sempre atualizados
       });
-      const res: Produtos = await response.json()
+      const res: Ingredientes = await response.json()
       setIngredientes(res)
     }
     buscarIngredientes();
@@ -125,10 +159,18 @@ export default function Home() {
               alt={produtoSelecionado.nome}
               className="w-full rounded mb-4"
             />
-            <p className="text-gray-600 mb-2">{produtoSelecionado.descricao}</p>
-            <p className="text-green-700 font-bold text-xl">
-              R$ {produtoSelecionado.preco}
-            </p>
+            <div className="flex justify-between mb-8">
+              <p className="text-green-700 font-bold text-2xl">
+                R$ {produtoSelecionado.preco}
+              </p>
+              <div className="flex gap-1">
+                <button className="bg-green-700 w-8 rounded-lg text-white font-bold hover:cursor-pointer">-</button>
+                <p className="text-center w-8 text-2xl text-green-700 font-bold">{quantidadeSelecionado}</p>
+                <button className="bg-green-700 w-8 rounded-lg text-white font-bold hover:cursor-pointer">+</button>
+              </div>
+            </div>
+                       
+
             <p className="mt-2 text-sm">
               <strong>Ingredientes:</strong> {produtoSelecionado.ingredientes_detalhe.map((ing: any) => ing.nome).join(", ")}
             </p>
@@ -141,7 +183,7 @@ export default function Home() {
                   <label key={ing.id} className="flex items-center gap-2 hover:cursor-pointer">
                     <input
                       type="checkbox"
-                      checked={selecionados.includes(ing.id)}
+                      checked={adiconaisSelecionados.includes(ing.id)}
                       onChange={() => toggleIngrediente(ing.id)}
                     />
                     {ing.nome} (R$ {ing.preco})
@@ -157,9 +199,9 @@ export default function Home() {
             </div>
 
             <div className="mt-5 text-center">
-              <button className="w-full py-2 text-white rounded-lg bg-green-700
-              hover:cursor-pointer">
-                Adicionar
+              <button onClick={() => adicionarCarrinho()}
+              className="flex justify-center w-full py-2 text-white rounded-lg bg-green-700 hover:cursor-pointer">
+                Adicionar ao carrinho < ShoppingCartIcon className="w-5"/>
               </button>
             </div>
 

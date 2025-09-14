@@ -22,7 +22,7 @@ export default function GerenciarIngrediente() {
     async function fetchIngrediente() {
       console.log("Buscando Ingrediente com id:", id);
       
-      const res = await fetch(`http://localhost:8000/ingredientes/${id}`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/ingredientes/${id}`, {
           headers: {
             "Accept": "application/json"
           },
@@ -47,7 +47,7 @@ export default function GerenciarIngrediente() {
     const formData = new FormData(e.currentTarget);
 
     try {
-      const res = await fetch(`http://localhost:8000/Ingredientes/${id}/`,{  //Esta enviando a atualização
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/Ingredientes/${id}/`,{  //Esta enviando a atualização
         method: "PATCH",
         body: formData,
       });

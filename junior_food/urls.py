@@ -20,6 +20,7 @@ from django.urls import path, include
 
 urlpatterns = [
     path('', include('cardapio.urls')),
+    path('', include('carrinho.urls')),
     path('', include('pedidos.urls')),
     path('admin/', admin.site.urls),
 ]

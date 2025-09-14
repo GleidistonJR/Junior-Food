@@ -16,7 +16,7 @@ export default function Gerenciaringrediente (){
 
   useEffect(() => {
     async function buscarIngredientes() {
-      const url = "http://localhost:8000/ingredientes";
+      const url = `${process.env.NEXT_PUBLIC_API_URL}/ingredientes`;
           
       const response = await fetch(url, {
           cache: "no-store" // garante que os dados são sempre atualizados
@@ -28,7 +28,7 @@ export default function Gerenciaringrediente (){
   }, []);
   
     async function excluirIngrediente(id: number) {
-      const url = `http://localhost:8000/ingredientes/${id}/`;
+      const url = `${process.env.NEXT_PUBLIC_API_URL}/ingredientes/${id}/`;
           
       const response = await fetch(url, { 
         method: "DELETE", 
